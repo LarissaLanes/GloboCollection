@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let safeWindow = UIWindow(windowScene: windowScene)
         safeWindow.frame = UIScreen.main.bounds
         
-        let firstScreen = ViewController()
+        let firstScreen = TabBarController()
         let navViewController = UINavigationController(rootViewController: firstScreen)
         safeWindow.rootViewController = navViewController
         safeWindow.makeKeyAndVisible()
