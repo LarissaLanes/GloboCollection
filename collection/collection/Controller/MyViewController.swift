@@ -1,18 +1,18 @@
 //
-//  HomeViewController.swift
+//  MyViewController.swift
 //  collection
 //
-//  Created by Larissa Lanes on 30/08/23.
+//  Created by Larissa Lanes on 31/08/23.
 //
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class MyViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .yellow
-        self.title = "home"
+        self.view.backgroundColor = .background
+//        self.title = "NowViewController"
 
         // Do any additional setup after loading the view.
     }
