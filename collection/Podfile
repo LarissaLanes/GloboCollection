@@ -9,5 +9,8 @@ target 'collection' do
 
   pod 'FirebaseAuth'
   pod 'FirebaseFirestore'
+  pod 'FirebaseDatabase'
+  pod 'FirebaseStorage'
+  pod 'FirebaseCore'
 
 end

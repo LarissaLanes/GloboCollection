@@ -14,6 +14,7 @@ class TabBarController: UITabBarController {
         self.setupTabBarController()
     }
     
+    
     private func setupTabBarController(){
         
         //apenas pq vao ser Nvaigation controllers se nao forem precisa apenas instanciar diretamente no array de controllers

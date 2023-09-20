@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		513F27B118D36B420452D749 /* Pods_collection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6BD9C092B4692C4E87A62E1 /* Pods_collection.framework */; };
+		AE06CD3B2AB4DE5300073B00 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE06CD3A2AB4DE5300073B00 /* Utilities.swift */; };
 		AE6A17072AB23D95001BE6BC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A17062AB23D95001BE6BC /* LoginViewController.swift */; };
 		AE6A17092AB23DC9001BE6BC /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A17082AB23DC9001BE6BC /* RegisterViewController.swift */; };
 		AEE2DD8F2A9FBEA20040D789 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE2DD8E2A9FBEA20040D789 /* AppDelegate.swift */; };
@@ -27,6 +28,7 @@
 /* Begin PBXFileReference section */
 		55D24F796CB99F0375939CE5 /* Pods-collection.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-collection.debug.xcconfig"; path = "Target Support Files/Pods-collection/Pods-collection.debug.xcconfig"; sourceTree = "<group>"; };
 		877028FC790BC1B1DD034DC5 /* Pods-collection.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-collection.release.xcconfig"; path = "Target Support Files/Pods-collection/Pods-collection.release.xcconfig"; sourceTree = "<group>"; };
+		AE06CD3A2AB4DE5300073B00 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		AE6A17062AB23D95001BE6BC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AE6A17082AB23DC9001BE6BC /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		AEE2DD8B2A9FBEA20040D789 /* collection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = collection.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +69,22 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		AE06CD372AB4DA1100073B00 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				AE06CD3A2AB4DE5300073B00 /* Utilities.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		AE7AD9042ABB512200D48A65 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				AE6A17082AB23DC9001BE6BC /* RegisterViewController.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
 		AEE2DD822A9FBEA20040D789 = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +106,7 @@
 		AEE2DD8D2A9FBEA20040D789 /* collection */ = {
 			isa = PBXGroup;
 			children = (
+				AE06CD372AB4DA1100073B00 /* Helpers */,
 				AEE2DDA42A9FD24E0040D789 /* Controller */,
 				AEE2DDA32A9FD2480040D789 /* View */,
 				AEE2DDA22A9FD23E0040D789 /* Model */,
@@ -120,6 +139,7 @@
 		AEE2DDA42A9FD24E0040D789 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				AE7AD9042ABB512200D48A65 /* Register */,
 				AEE2DDBC2AA274730040D789 /* Login */,
 				AEE2DDA52A9FD7A50040D789 /* HomeViewController.swift */,
 				AEE2DDB12AA12B320040D789 /* MyViewController.swift */,
@@ -142,7 +162,6 @@
 			isa = PBXGroup;
 			children = (
 				AE6A17062AB23D95001BE6BC /* LoginViewController.swift */,
-				AE6A17082AB23DC9001BE6BC /* RegisterViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -273,6 +292,7 @@
 				AEE2DDB92AA12F0E0040D789 /* Theme.swift in Sources */,
 				AE6A17092AB23DC9001BE6BC /* RegisterViewController.swift in Sources */,
 				AEE2DD932A9FBEA20040D789 /* ViewController.swift in Sources */,
+				AE06CD3B2AB4DE5300073B00 /* Utilities.swift in Sources */,
 				AEE2DD8F2A9FBEA20040D789 /* AppDelegate.swift in Sources */,
 				AEE2DD912A9FBEA20040D789 /* SceneDelegate.swift in Sources */,
 				AEE2DDB22AA12B320040D789 /* MyViewController.swift in Sources */,
