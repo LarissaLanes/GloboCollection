@@ -152,6 +152,14 @@ class RegisterViewController: UIViewController {
                 }else{
                     
                     print("usuario criado com sucesso!")
+                    //salvando o id do usuario no userdefaults
+                    if let user = result?.user{
+                        let uid = user.uid
+                        UserDefaults.standard.set(uid, forKey: "userUID")
+                        print(UserDefaults.standard.set(uid, forKey: "userUID")
+)
+                    }
+                    
                     let db = Firestore.firestore()
                     
                     db.collection("users").addDocument(data: ["nick_name" : userName, "uid" : result!.user.uid]) { (error) in
@@ -163,12 +171,6 @@ class RegisterViewController: UIViewController {
                     self.transitionToTabBar()
                 }
             }
-            
-            
-//            self.alert(title: "parabens", message: "sucesso ao cadastrar")
-//            print("sucesso ao cadastrar")
-            
-            
         }
             
             ///funcao antiga
@@ -184,24 +186,14 @@ class RegisterViewController: UIViewController {
 //                }
 //
 //            })
-        
-     
-    }
-    func showError(_message:String){
-        print("falha ao cadastrar")
-        self.alert(title: "atencao", message: "falha ao cadastrar")
-
-//            errorLabel.text = message
-//            errorLabel.alpha = 1
-        
     }
     
     func transitionToTabBar() {
         let tabBarControlle = TabBarController()
-        self.navigationController?.pushViewController(tabBarControlle, animated: false)
+        
+        self.navigationController?.setViewControllers([tabBarControlle], animated: true)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
-
-
 }
 
 

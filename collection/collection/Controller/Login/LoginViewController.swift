@@ -118,29 +118,54 @@ class LoginViewController: UIViewController {
     // MARK: - Actions
     
     @objc private func loginButtonTapped() {
+
+        let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let pass = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        let email:String = self.emailTextField.text ?? ""
-        let pass:String = self.passwordTextField.text ?? ""
-        
-        self.auth?.signIn(withEmail: email, password: pass, completion: { (user, error) in
+        Auth.auth().signIn(withEmail: email, password: pass) {(result, error) in
             
-            if error != nil{
-                self.alert(title: "atencao", message: "dados incorretos")
-                print("dados incorretos")
+            if error != nil {
+                print("falha ao logar: \(error)")
+                self.alert(title: "atenção", message: "\(error)")
                 
-            }else{
+            }else {
                 
-                if user == nil{
-                    self.alert(title: "atencao", message: "tivemos um problema inesperado")
-                    print("tivemos um problema inesperado")
-                    
-                }else{
-                    self.alert(title: "parabens", message: "login feito com sucesso!")
-                    print("login feito com sucesso")
+                self.transitionToTabBar()
+                //userdefaults
+                if let user = result?.user{
+                    let uid = user.uid
+                    UserDefaults.standard.set(uid, forKey: "userUID")
+                    print(UserDefaults.standard.set(uid, forKey: "userUID")
+)
                 }
+                print("login feito com sucesso")
+                self.alert(title: "parabens", message: "login feito com sucesso!")
+
+                
             }
-            
-        })
+        }
+//        self.auth?.signIn(withEmail: email, password: pass, completion: { (user, error) in
+//
+//            if error != nil{
+//                self.alert(title: "atencao", message: "dados incorretos")
+//                print("Usuário não encontrado \(error)")
+//
+//            }else{
+//
+//                if user == nil{
+//                    self.alert(title: "atencao", message: "tivemos um problema inesperado")
+//                    print("tivemos um problema inesperado ou usuario nao existente")
+//
+//                }else{
+//                    self.alert(title: "parabens", message: "login feito com sucesso!")
+//                    print("login feito com sucesso")
+//
+////                    self.transitionToTabBar()
+//                }
+//
+//            }
+//
+//        })
     }
     
     @objc private func registerButtonTapped() {
@@ -148,6 +173,21 @@ class LoginViewController: UIViewController {
         let registerViewController = RegisterViewController()
         self.navigationController?.pushViewController(registerViewController, animated: true)
     }
+    
+    func transitionToTabBar() {
+        let tabBarControlle = TabBarController()
+        
+        self.navigationController?.setViewControllers([tabBarControlle], animated: true)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+//    func transitionToTabBar() {
+//        let tabBarControlle = TabBarController()
+//        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+//            appDelegate.window?.rootViewController = tabBarControlle
+//        }
+//    }
+
 
 }
 
