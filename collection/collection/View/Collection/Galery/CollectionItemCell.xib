@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionItemCell" id="gTV-IL-0wX" customClass="CollectionItemCell" customModule="collection" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="337"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="300" height="337"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="bbb2 " translatesAutoresizingMaskIntoConstraints="NO" id="Mdn-M3-bVd">
+                        <rect key="frame" x="10" y="10" width="280" height="266"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cacto lider" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkb-qm-p5q">
+                        <rect key="frame" x="10" y="293" width="280" height="18"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                        <color key="textColor" systemColor="opaqueSeparatorColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="Mdn-M3-bVd" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="EbM-zJ-9CG"/>
+                <constraint firstItem="Mdn-M3-bVd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="GQQ-Zw-5DE"/>
+                <constraint firstItem="gkb-qm-p5q" firstAttribute="top" secondItem="Mdn-M3-bVd" secondAttribute="bottom" constant="17" id="R9S-ve-Mg2"/>
+                <constraint firstAttribute="trailing" secondItem="gkb-qm-p5q" secondAttribute="trailing" constant="10" id="TFz-Pt-MAa"/>
+                <constraint firstAttribute="bottom" secondItem="gkb-qm-p5q" secondAttribute="bottom" constant="26" id="b3E-jG-g4O"/>
+                <constraint firstItem="gkb-qm-p5q" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="rJi-f6-e8n"/>
+                <constraint firstAttribute="trailing" secondItem="Mdn-M3-bVd" secondAttribute="trailing" constant="10" id="yUk-gL-a8W"/>
+            </constraints>
+            <size key="customSize" width="300" height="337"/>
+            <connections>
+                <outlet property="image" destination="Mdn-M3-bVd" id="5no-ay-haM"/>
+                <outlet property="titleImage" destination="gkb-qm-p5q" id="nh4-Rz-HyO"/>
+            </connections>
+            <point key="canvasLocation" x="233.58778625954199" y="120.77464788732395"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="bbb2 " width="1038" height="1038"/>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
