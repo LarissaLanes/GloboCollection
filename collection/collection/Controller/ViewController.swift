@@ -24,7 +24,12 @@ class TabBarController: UITabBarController {
             print("faca o login do usuario")
             redirectToLoginScreen()
         }
+        
+        self.navigationItem.setHidesBackButton(true, animated: false)
+
     }
+    
+    
     
     func redirectToLoginScreen(){
         let loginViewController = LoginViewController()

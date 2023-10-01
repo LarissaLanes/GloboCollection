@@ -20,14 +20,16 @@ struct Model {
 struct Collection {
     let id: Int
     let nome: String
-    let imagem: String
+    let imagemDesbloqueada: String
+    let imagemBloqueada: String
     let objetos: String
     let descricao: String
     
-    init(id: Int, nome: String, imagem: String, objetos: String, descricao: String) {
+    init(id: Int, nome: String, imagemDesbloqueada: String, imagemBloqueada: String, objetos: String, descricao: String) {
         self.id = id
         self.nome = nome
-        self.imagem = imagem
+        self.imagemDesbloqueada = imagemDesbloqueada
+        self.imagemBloqueada = imagemBloqueada
         self.objetos = objetos
         self.descricao = descricao
     }
@@ -37,13 +39,16 @@ struct ModelRecents {
     let image: String
     let title: String
     let legend: String
-    
-    init(image: String, title: String, legend: String) {
+    let redeemedStickerID: Int // Adicione esta propriedade
+
+    init(image: String, title: String, legend: String, redeemedStickerID: Int) {
         self.image = image
         self.title = title
         self.legend = legend
+        self.redeemedStickerID = redeemedStickerID
     }
 }
+
 
 class CollectionViewController: UIViewController {
     
@@ -103,12 +108,12 @@ class CollectionViewController: UIViewController {
                
                //dados do array de figurinhas
                //figurinhas
-        let collection1 = Collection(id: 1, nome: "Cacto Lider", imagem: "bbb6", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.")
-        let collection2 = Collection(id: 2, nome: "Rob BBB Laranja", imagem: "bbb6", objetos: "RobBBB", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.")
-        let collection3 = Collection(id: 3, nome: "Cacto Lider", imagem: "bbb6", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.")
-        let collection4 = Collection(id: 4, nome: "Rob BBB Laranja", imagem: "bbb6", objetos: "RobBBB", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.")
-        let collection5 = Collection(id: 5, nome: "Cacto Lider", imagem: "bbb6", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.")
-        let collection6 = Collection(id: 5, nome: "Cacto Lider", imagem: "bbb6", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.")
+        let collection1 = Collection(id: 1, nome: "Boninho", imagemDesbloqueada: "stickerBoninho", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.")
+        let collection2 = Collection(id: 2, nome: "Rob BBB Laranja", imagemDesbloqueada: "stickerBoninho", imagemBloqueada: "imagemBloqueada", objetos: "RobBBB", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.")
+        let collection3 = Collection(id: 3, nome: "Cacto Lider", imagemDesbloqueada: "stickerBoninho", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.")
+        let collection4 = Collection(id: 4, nome: "Rob BBB Laranja", imagemDesbloqueada: "stickerBoninho", imagemBloqueada: "imagemBloqueada", objetos: "RobBBB", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.")
+        let collection5 = Collection(id: 5, nome: "Cacto Lider", imagemDesbloqueada: "stickerBoninho", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.")
+        let collection6 = Collection(id: 5, nome: "Cacto Lider", imagemDesbloqueada: "stickerBoninho", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.")
         
 
                        
@@ -120,12 +125,12 @@ class CollectionViewController: UIViewController {
                        models.append(Model(id: 5, text: "The masked singer", imageName: "image_5", imageDetails: "bbb1", figurinhas: [collection1,collection2,collection3,collection4,collection5]))
        
                        //recents
-                       recents.append(ModelRecents(image: "bbb3", title: "Cacto", legend: "big brotherbrasil"))
-                       recents.append(ModelRecents(image: "bbb3", title: "Cacto 4", legend: "big brother brasil"))
-                       recents.append(ModelRecents(image: "bbb3", title: "Cacto 4", legend: "big brother brasil"))
-                       recents.append(ModelRecents(image: "bbb3", title: "Cacto 3", legend: "big brother brasil"))
-                        recents.append(ModelRecents(image: "bbb3", title: "Cacto lider", legend: "big brother brasil"))
-                        recents.append(ModelRecents(image: "bbb3", title: "Cacto lider", legend: "big brother brasil"))
+        recents.append(ModelRecents(image: "bbb3", title: "Cacto", legend: "big brotherbrasil", redeemedStickerID: 1))
+        recents.append(ModelRecents(image: "bbb3", title: "Cacto 4", legend: "big brother brasil", redeemedStickerID: 1))
+        recents.append(ModelRecents(image: "bbb3", title: "Cacto 4", legend: "big brother brasil", redeemedStickerID: 1))
+        recents.append(ModelRecents(image: "bbb3", title: "Cacto 3", legend: "big brother brasil", redeemedStickerID: 1))
+        recents.append(ModelRecents(image: "bbb3", title: "Cacto lider", legend: "big brother brasil", redeemedStickerID: 1))
+        recents.append(ModelRecents(image: "bbb3", title: "Cacto lider", legend: "big brother brasil", redeemedStickerID: 1))
 
 
     }

@@ -16,15 +16,21 @@ class CollectionItemCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     func configure(with collection: Collection) {
-           // Configure a célula com os dados da coleção
-           image.image = UIImage(named: collection.imagem)
-        titleImage.text = collection.nome
 
-           // Configure outros elementos conforme necessário
-       }
+        let stickerID = UserDefaults.standard.integer(forKey: "stickerResgatado")
 
+        if stickerID == collection.id {
+            print("id: \(stickerID)")
+            image.image = UIImage(named: collection.imagemDesbloqueada)
+            titleImage.text = collection.nome
+
+        } else {
+            image.image = UIImage(named: collection.imagemBloqueada)
+            titleImage.text = "sticker \(collection.id)"
+
+        }
+    }
 }

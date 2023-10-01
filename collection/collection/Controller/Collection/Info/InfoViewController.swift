@@ -1,10 +1,3 @@
-//
-//  InfoViewController.swift
-//  collection
-//
-//  Created by Larissa Lanes on 29/09/23.
-//
-
 import UIKit
 
 class InfoViewController: UIViewController {
@@ -49,8 +42,51 @@ class InfoViewController: UIViewController {
         return label
     }()
     
+    // Adicione um botão para iniciar o quiz
+    private let startQuizButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Iniciar Quiz", for: .normal)
+        button.setTitleColor(.blue, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private let showProfileButton: UIButton = {
+         let button = UIButton()
+         button.setTitle("Mostrar no Perfil", for: .normal)
+         button.setTitleColor(.blue, for: .normal)
+         button.translatesAutoresizingMaskIntoConstraints = false
+         return button
+     }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Obtenha o ID do quiz completo do UserDefaults
+        let completedQuizID = UserDefaults.standard.integer(forKey: "quizCompleto")
+        
+        // Verifique se o ID do quiz completo é igual ao ID da imagem
+        if let collection = collectionData, collection.id == completedQuizID {
+            // Se forem iguais, mostre o botão "Mostrar no Perfil" e oculte o botão "Iniciar Quiz"
+            startQuizButton.isHidden = true
+            showProfileButton.isHidden = false
+        } else {
+            // Se não forem iguais, mostre o botão "Iniciar Quiz" e oculte o botão "Mostrar no Perfil"
+            startQuizButton.isHidden = false
+            showProfileButton.isHidden = true
+        }
+        
+        // Configurar a ação do botão "Iniciar Quiz"
+        startQuizButton.addTarget(self, action: #selector(startQuizButtonTapped), for: .touchUpInside)
+        
+        // Configurar a ação do botão "Mostrar no Perfil"
+        showProfileButton.addTarget(self, action: #selector(showProfileButtonTapped), for: .touchUpInside)
+        
+        // ... configuração de dados da coleção e outras configurações
+        
+    
+
         
         self.view.backgroundColor = .backgroundPage
         
@@ -60,6 +96,7 @@ class InfoViewController: UIViewController {
         view.addSubview(objectLabel)
         view.addSubview(dividerView)
         view.addSubview(descriptionLabel)
+        view.addSubview(startQuizButton) // Adicione o botão
         
         // Configure as restrições de layout
         NSLayoutConstraint.activate([
@@ -85,19 +122,91 @@ class InfoViewController: UIViewController {
             descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             descriptionLabel.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor, constant: -16),
+            
+            // Restrições para o botão
+            startQuizButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 16),
+            startQuizButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
+        
+//        // Obtenha o ID do quiz completo do UserDefaults
+//              let completedQuizID = UserDefaults.standard.integer(forKey: "quizCompleto")
+//
+//              // Verifique se o ID do quiz completo é igual ao ID do botão
+//              if let collection = collectionData, collection.id == completedQuizID {
+//                  // Se o ID do quiz completo for igual ao ID do botão, oculte o botão
+//                  startQuizButton.isHidden = false
+//              }
+        
+        // Configurar a ação do botão para iniciar o quiz
+        startQuizButton.addTarget(self, action: #selector(startQuizButtonTapped), for: .touchUpInside)
         
         // Verifique se há dados da coleção e atualize as visualizações com os dados
         if let collection = collectionData {
+            
+            let stickerID = UserDefaults.standard.integer(forKey: "stickerResgatado")
+
+            if stickerID == collection.id {
+                print("id: \(stickerID)")
+                imageView.image = UIImage(named: collection.imagemDesbloqueada) // Substitua pela imagem real
+                titleLabel.text = collection.nome
+                objectLabel.text = collection.objetos
+                descriptionLabel.text = collection.descricao
+
+            } else {
+                imageView.image = UIImage(named: collection.imagemBloqueada) // Substitua pela imagem real
+                titleLabel.text = "sticker\(collection.id)"
+                objectLabel.text = ""
+                descriptionLabel.text = "faca um quizz para debloquear"
+
+            }
             // Configure a imagem, o título, o objeto e o texto com os dados da coleção
-            imageView.image = UIImage(named: collection.imagem) // Substitua pela imagem real
-            titleLabel.text = collection.nome
-            objectLabel.text = collection.objetos
-            descriptionLabel.text = collection.descricao
+          
             
             // Faça qualquer outra coisa que você deseja fazer com os dados da coleção
         }
+        
+        
     }
+    
+    // Método de ação para o botão de iniciar o quiz
+    @objc private func startQuizButtonTapped() {
+        // Verifique se há dados da coleção
+        guard let collection = collectionData else {
+            return
+        }
+        
+        // Com base no ID da coleção, redirecione para o quiz apropriado
+        switch collection.id {
+        case 1:
+            // Redirecione para o Quiz 1
+            // Substitua "Quiz1ViewController" pelo nome da sua classe de quiz
+            let quiz1ViewController = Quiz1ViewController()
+            //instacinado os dados do array de collection na tela quizz1ViewController
+            quiz1ViewController.collectionData = collection
+
+            navigationController?.pushViewController(quiz1ViewController, animated: true)
+        case 2:
+            // Redirecione para o Quiz 2
+            // Substitua "Quiz2ViewController" pelo nome da sua classe de quiz
+            let quiz2ViewController = Quiz2ViewController()
+            quiz2ViewController.collectionData = collection
+
+            navigationController?.pushViewController(quiz2ViewController, animated: true)
+        // Adicione mais casos para outros IDs de coleção e quizzes, conforme necessário
+        default:
+            break
+        }
+    }
+    
+    // Método de ação para o botão "Mostrar no Perfil"
+      @objc private func showProfileButtonTapped() {
+          // Implemente a lógica para mostrar no perfil
+          print("mostrei a imagem no perfil")
+      }
+    
+    
+    
+    
     
     // Resto da sua implementação da InfoCollectionViewController
 }
