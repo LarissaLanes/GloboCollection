@@ -45,6 +45,7 @@
 		AEE2DDB62AA12B690040D789 /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE2DDB52AA12B690040D789 /* DownloadsViewController.swift */; };
 		AEE2DDB92AA12F0E0040D789 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE2DDB82AA12F0E0040D789 /* Theme.swift */; };
 		AEE2DDBB2AA26CAF0040D789 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AEE2DDBA2AA26CAF0040D789 /* GoogleService-Info.plist */; };
+		AEED25202ACC8CEA00FF89D6 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEED251F2ACC8CEA00FF89D6 /* WebViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +90,7 @@
 		AEE2DDB52AA12B690040D789 /* DownloadsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsViewController.swift; sourceTree = "<group>"; };
 		AEE2DDB82AA12F0E0040D789 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		AEE2DDBA2AA26CAF0040D789 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AEED251F2ACC8CEA00FF89D6 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		F6BD9C092B4692C4E87A62E1 /* Pods_collection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_collection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -129,6 +131,7 @@
 				AE35FECE2AC8CB5400B047B5 /* Quiz2ViewController.swift */,
 				AE35FED02AC8D01300B047B5 /* ResultViewController.swift */,
 				AE35FED42AC9DC3E00B047B5 /* ErrorViewController.swift */,
+				AEED251F2ACC8CEA00FF89D6 /* WebViewController.swift */,
 			);
 			path = Quizz;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				AE8CD7052AC71B24002F0537 /* MyRecentCollectionViewCell.swift in Sources */,
 				AE8CD7092AC71B3F002F0537 /* MyCollectionViewCell.swift in Sources */,
 				AE8CD70F2AC71E5D002F0537 /* DetailsTableViewController.swift in Sources */,
+				AEED25202ACC8CEA00FF89D6 /* WebViewController.swift in Sources */,
 				AE4B8EF92AC7298400A0BAEF /* ComponentScreen.swift in Sources */,
 				AE35FED52AC9DC3E00B047B5 /* ErrorViewController.swift in Sources */,
 				AE4B8EF62AC7208200A0BAEF /* CollectionItemCell.swift in Sources */,

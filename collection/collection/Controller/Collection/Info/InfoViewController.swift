@@ -170,32 +170,32 @@ class InfoViewController: UIViewController {
     
     // Método de ação para o botão de iniciar o quiz
     @objc private func startQuizButtonTapped() {
-        // Verifique se há dados da coleção
-        guard let collection = collectionData else {
-            return
-        }
+        let novaViewController = WebViewController()
+        navigationController?.pushViewController(novaViewController, animated: true)
+
         
-        // Com base no ID da coleção, redirecione para o quiz apropriado
-        switch collection.id {
-        case 1:
-            // Redirecione para o Quiz 1
-            // Substitua "Quiz1ViewController" pelo nome da sua classe de quiz
-            let quiz1ViewController = Quiz1ViewController()
-            //instacinado os dados do array de collection na tela quizz1ViewController
-            quiz1ViewController.collectionData = collection
-
-            navigationController?.pushViewController(quiz1ViewController, animated: true)
-        case 2:
-            // Redirecione para o Quiz 2
-            // Substitua "Quiz2ViewController" pelo nome da sua classe de quiz
-            let quiz2ViewController = Quiz2ViewController()
-            quiz2ViewController.collectionData = collection
-
-            navigationController?.pushViewController(quiz2ViewController, animated: true)
-        // Adicione mais casos para outros IDs de coleção e quizzes, conforme necessário
-        default:
-            break
-        }
+        
+        //quizz externo
+//                guard let collection = collectionData else {
+//            return
+//        }
+//
+//        // Com base no ID da coleção, redirecione para o quiz apropriado
+//        switch collection.id {
+//        case 1:
+//            let quiz1ViewController = Quiz1ViewController()
+//            quiz1ViewController.collectionData = collection
+//
+//            navigationController?.pushViewController(quiz1ViewController, animated: true)
+//        case 2:
+//            let quiz2ViewController = Quiz2ViewController()
+//            quiz2ViewController.collectionData = collection
+//
+//            navigationController?.pushViewController(quiz2ViewController, animated: true)
+//        // Adicione mais casos para outros IDs de coleção e quizzes, conforme necessário
+//        default:
+//            break
+//        }
     }
     
     // Método de ação para o botão "Mostrar no Perfil"
