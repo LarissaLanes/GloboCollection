@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class ResultViewController: UIViewController {
     
@@ -136,27 +137,39 @@ class ResultViewController: UIViewController {
                 self.stickerLabel.text = self.collectionData?.nome
             }, completion: nil)
 
-//            userDefaults.set(quizId, forKey: "quizCompleto")
-            userDefaults.set(collectionData?.id, forKey: "stickerResgatado")
-            // Resto do código
-            print("id guardado \(UserDefaults.standard.integer(forKey: "stickerResgatado"))")
+            print("id guardado \(UserDefaults.standard.integer(forKey: "stickerResgatado\(stickerID)"))")
+            print("id do quizz guaradado \(UserDefaults.standard.integer(forKey: "quizCompleto\(stickerID)"))")
             
-
+            //pontuacao de cada sticker salvo no firebase
             
-       
+            
+            if let userUID = UserDefaults.standard.string(forKey: "userUID") {
+                // Salve a pontuação do sticker no Firestore associada ao UID do usuário
+                let db = Firestore.firestore()
                 
+                db.collection("user_scores").document(userUID).setData([
+                    "stickerID\(stickerID)": stickerID,
+                    "stickerScore\(stickerID)": collectionData?.stickerScore ?? 0
+                ]) { (error) in
+                    if let error = error {
+                        print("Erro ao salvar a pontuação do sticker: \(error.localizedDescription)")
+                    } else {
+                        print("Pontuação do sticker salva com sucesso.")
+                    }
+                }
+            } else {
+                print("UID do usuário não encontrado.")
+            }
+
         } else {
             print("ID da coleção não encontrado.")
-            // Resto do código
         }
     }
-    
     
     @objc private func galeryButtonTapped() {
         let detailsTableController = TabBarController()
         navigationController?.pushViewController(detailsTableController, animated: true)
     }
-
 }
 
 

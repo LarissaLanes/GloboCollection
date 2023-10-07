@@ -62,32 +62,6 @@ class InfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Obtenha o ID do quiz completo do UserDefaults
-        let completedQuizID = UserDefaults.standard.integer(forKey: "quizCompleto")
-        
-        // Verifique se o ID do quiz completo é igual ao ID da imagem
-        if let collection = collectionData, collection.id == completedQuizID {
-            // Se forem iguais, mostre o botão "Mostrar no Perfil" e oculte o botão "Iniciar Quiz"
-            startQuizButton.isHidden = true
-            showProfileButton.isHidden = false
-        } else {
-            // Se não forem iguais, mostre o botão "Iniciar Quiz" e oculte o botão "Mostrar no Perfil"
-            startQuizButton.isHidden = false
-            showProfileButton.isHidden = true
-        }
-        
-        // Configurar a ação do botão "Iniciar Quiz"
-        startQuizButton.addTarget(self, action: #selector(startQuizButtonTapped), for: .touchUpInside)
-        
-        // Configurar a ação do botão "Mostrar no Perfil"
-        showProfileButton.addTarget(self, action: #selector(showProfileButtonTapped), for: .touchUpInside)
-        
-        // ... configuração de dados da coleção e outras configurações
-        
-    
-
-        
         self.view.backgroundColor = .backgroundPage
         
         // Adicione as visualizações à hierarquia de visualização
@@ -127,23 +101,19 @@ class InfoViewController: UIViewController {
             startQuizButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 16),
             startQuizButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
+    
+         
         
-//        // Obtenha o ID do quiz completo do UserDefaults
-//              let completedQuizID = UserDefaults.standard.integer(forKey: "quizCompleto")
-//
-//              // Verifique se o ID do quiz completo é igual ao ID do botão
-//              if let collection = collectionData, collection.id == completedQuizID {
-//                  // Se o ID do quiz completo for igual ao ID do botão, oculte o botão
-//                  startQuizButton.isHidden = false
-//              }
-        
-        // Configurar a ação do botão para iniciar o quiz
+    
         startQuizButton.addTarget(self, action: #selector(startQuizButtonTapped), for: .touchUpInside)
+        showProfileButton.addTarget(self, action: #selector(showProfileButtonTapped), for: .touchUpInside)
         
         // Verifique se há dados da coleção e atualize as visualizações com os dados
         if let collection = collectionData {
             
-            let stickerID = UserDefaults.standard.integer(forKey: "stickerResgatado")
+            let stickerID = UserDefaults.standard.integer(forKey: "stickerResgatado\(collection.id)")
+            let completedQuizID = UserDefaults.standard.integer(forKey: "quizCompleto\(collection.id)")
+
 
             if stickerID == collection.id {
                 print("id: \(stickerID)")
@@ -159,43 +129,50 @@ class InfoViewController: UIViewController {
                 descriptionLabel.text = "faca um quizz para debloquear"
 
             }
-            // Configure a imagem, o título, o objeto e o texto com os dados da coleção
-          
+           
             
-            // Faça qualquer outra coisa que você deseja fazer com os dados da coleção
+            //faz a troca dos botoes se o quiz ja estviver completo
+            if completedQuizID == collection.id {
+                startQuizButton.isHidden = true
+                showProfileButton.isHidden = false
+            }else{
+                startQuizButton.isHidden = false
+                showProfileButton.isHidden = true
+
+
+            }
+            
         }
-        
-        
     }
     
     // Método de ação para o botão de iniciar o quiz
     @objc private func startQuizButtonTapped() {
-        let novaViewController = WebViewController()
-        navigationController?.pushViewController(novaViewController, animated: true)
+//        let novaViewController = WebViewController()
+//        navigationController?.pushViewController(novaViewController, animated: true)
 
         
         
         //quizz externo
-//                guard let collection = collectionData else {
-//            return
-//        }
-//
-//        // Com base no ID da coleção, redirecione para o quiz apropriado
-//        switch collection.id {
-//        case 1:
-//            let quiz1ViewController = Quiz1ViewController()
-//            quiz1ViewController.collectionData = collection
-//
-//            navigationController?.pushViewController(quiz1ViewController, animated: true)
-//        case 2:
-//            let quiz2ViewController = Quiz2ViewController()
-//            quiz2ViewController.collectionData = collection
-//
-//            navigationController?.pushViewController(quiz2ViewController, animated: true)
-//        // Adicione mais casos para outros IDs de coleção e quizzes, conforme necessário
-//        default:
-//            break
-//        }
+                guard let collection = collectionData else {
+            return
+        }
+
+        // Com base no ID da coleção, redirecione para o quiz apropriado
+        switch collection.id {
+        case 1:
+            let quiz1ViewController = Quiz1ViewController()
+            quiz1ViewController.collectionData = collection
+
+            navigationController?.pushViewController(quiz1ViewController, animated: true)
+        case 2:
+            let quiz2ViewController = Quiz2ViewController()
+            quiz2ViewController.collectionData = collection
+
+            navigationController?.pushViewController(quiz2ViewController, animated: true)
+        // Adicione mais casos para outros IDs de coleção e quizzes, conforme necessário
+        default:
+            break
+        }
     }
     
     // Método de ação para o botão "Mostrar no Perfil"

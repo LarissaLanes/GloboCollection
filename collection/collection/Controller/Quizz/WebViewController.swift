@@ -14,9 +14,11 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.navigationItem.setHidesBackButton(true, animated: false)
-        self.navigationItem
+        
+        let backButton = UIBarButtonItem(title: "Voltar", style: .plain, target: self, action: #selector(voltarButtonPressionado))
+                navigationItem.leftBarButtonItem = backButton
+//        self.navigationItem.setHidesBackButton(true, animated: false)
+//        self.navigationItem
 
         // Inicialize a webView
         webView = WKWebView()
@@ -39,8 +41,13 @@ class WebViewController: UIViewController, WKNavigationDelegate {
             self.webView.navigationDelegate = self
         }
     }
+    
+    @objc func voltarButtonPressionado() {
+        
+        print("botao de voltar clicado")
+    }
+        
 
-    // MARK: - Navigation
 
 }
 

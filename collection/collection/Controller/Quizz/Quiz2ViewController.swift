@@ -118,7 +118,8 @@ class Quiz2ViewController: UIViewController {
 //                    userDefaults.set(stickerID, forKey: "stickerResgatado")
 //                }
                 
-                userDefaults.set(quizId, forKey: "quizCompleto")
+                userDefaults.set(quizId, forKey: "quizCompleto2")
+                userDefaults.set(collectionData?.id, forKey: "stickerResgatado2")
 //                userDefaults.set(collectionData?.id, forKey: "stickerResgatado2")
                 
                 navigationController?.pushViewController(resultViewController, animated: true)
@@ -160,7 +161,8 @@ class Quiz2ViewController: UIViewController {
                 // Redirecione para outra tela aqui
                 let resultViewController = ResultViewController()
                 resultViewController.collectionData = collectionData // Passe os dados da coleção
-
+                userDefaults.set(quizId, forKey: "quizCompleto2")
+                userDefaults.set(collectionData?.id, forKey: "stickerResgatado2")
 //                resultViewController.quizResult = "Quiz concluído com sucessooooooo!"
                 navigationController?.pushViewController(resultViewController, animated: true)
             } else {

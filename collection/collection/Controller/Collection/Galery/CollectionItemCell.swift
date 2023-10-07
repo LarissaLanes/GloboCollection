@@ -20,7 +20,7 @@ class CollectionItemCell: UICollectionViewCell {
     
     func configure(with collection: Collection) {
 
-        let stickerID = UserDefaults.standard.integer(forKey: "stickerResgatado")
+        let stickerID = UserDefaults.standard.integer(forKey: "stickerResgatado\(collection.id)")
 
         if stickerID == collection.id {
             print("id: \(stickerID)")

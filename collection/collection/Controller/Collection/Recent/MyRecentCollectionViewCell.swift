@@ -21,9 +21,22 @@ class MyRecentCollectionViewCell: UICollectionViewCell {
     }
     
     public func configure(with recents: ModelRecents) {
-        self.myImageView.image = UIImage(named: recents.image)
-        self.title.text = recents.title
-        self.subTitle.text = recents.legend
-    }
 
+        let stickerID = UserDefaults.standard.integer(forKey: "stickerResgatado\(recents.id)")
+
+        if stickerID == recents.id {
+            myImageView.image = UIImage(named: recents.imagemDesbloqueada)
+            title.text = recents.nome
+            subTitle.text = recents.album
+
+        } else {
+            myImageView.image = UIImage(named: "")
+            title.text = ""
+            subTitle.text = ""
+
+        }
+    }
 }
+
+
+

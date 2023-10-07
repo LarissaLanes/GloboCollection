@@ -1,4 +1,5 @@
 import UIKit
+import FirebaseFirestore
 
 class Quiz1ViewController: UIViewController {
     
@@ -114,12 +115,8 @@ class Quiz1ViewController: UIViewController {
 //                resultViewController.quizResult = "Quiz concluído com sucesso!"
                 resultViewController.canRedeem = true // Mostrar botão de resgatar
                 
-//                if let stickerID = collectionData?.id {
-//                    userDefaults.set(stickerID, forKey: "stickerResgatado")
-//                }
-//                
-                userDefaults.set(quizId, forKey: "quizCompleto")
-//                userDefaults.set(collectionData?.id, forKey: "stickerResgatado1")
+                userDefaults.set(quizId, forKey: "quizCompleto1")
+                userDefaults.set(collectionData?.id, forKey: "stickerResgatado1")
                 
                 navigationController?.pushViewController(resultViewController, animated: true)
             } else {
@@ -160,9 +157,9 @@ class Quiz1ViewController: UIViewController {
                 // Redirecione para outra tela aqui
                 let resultViewController = ResultViewController()
                 resultViewController.collectionData = collectionData // Passe os dados da coleção
-                
-                userDefaults.set(quizId, forKey: "quizCompleto")
-                userDefaults.set(collectionData?.id, forKey: "stickerResgatado")
+                userDefaults.set(quizId, forKey: "quizCompleto1")
+                userDefaults.set(collectionData?.id, forKey: "stickerResgatado1")
+//                userDefaults.set(collectionData?.id, forKey: "stickerResgatado")
 
 //                resultViewController.quizResult = "Quiz concluído com sucessooooooo!"
                 navigationController?.pushViewController(resultViewController, animated: true)

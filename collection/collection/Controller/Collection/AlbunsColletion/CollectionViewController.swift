@@ -24,28 +24,41 @@ struct Collection {
     let imagemBloqueada: String
     let objetos: String
     let descricao: String
+    let album: String
+    let stickerScore: Int
     
-    init(id: Int, nome: String, imagemDesbloqueada: String, imagemBloqueada: String, objetos: String, descricao: String) {
+    init(id: Int, nome: String, imagemDesbloqueada: String, imagemBloqueada: String, objetos: String, descricao: String, album: String, stickerScore: Int) {
         self.id = id
         self.nome = nome
         self.imagemDesbloqueada = imagemDesbloqueada
         self.imagemBloqueada = imagemBloqueada
         self.objetos = objetos
         self.descricao = descricao
+        self.album  = album
+        self.stickerScore = stickerScore
     }
 }
 
+////excluir no futuro(usar o array de sticker do usuario no firebase)
 struct ModelRecents {
-    let image: String
-    let title: String
-    let legend: String
-    let redeemedStickerID: Int // Adicione esta propriedade
+    let id: Int
+    let nome: String
+    let imagemDesbloqueada: String
+    let imagemBloqueada: String
+    let objetos: String
+    let descricao: String
+    let album: String
+    let stickerScore: Int // Adicione esta propriedade
 
-    init(image: String, title: String, legend: String, redeemedStickerID: Int) {
-        self.image = image
-        self.title = title
-        self.legend = legend
-        self.redeemedStickerID = redeemedStickerID
+    init(id: Int, nome: String, imagemDesbloqueada: String, imagemBloqueada: String, objetos: String, descricao: String, album: String, stickerScore: Int) {
+        self.id = id
+        self.nome = nome
+        self.imagemDesbloqueada = imagemDesbloqueada
+        self.imagemBloqueada = imagemBloqueada
+        self.objetos = objetos
+        self.descricao = descricao
+        self.album = album
+        self.stickerScore = stickerScore
     }
 }
 
@@ -54,7 +67,7 @@ class CollectionViewController: UIViewController {
     
     //models
         var models = [Model]()
-        var recents = [ModelRecents]()
+    var recents = [ModelRecents]()
         var selectedRow = 0
     
         var data = [[RecentTableViewCell()],[CollectionTableViewCell()]]
@@ -108,29 +121,29 @@ class CollectionViewController: UIViewController {
                
                //dados do array de figurinhas
                //figurinhas
-        let collection1 = Collection(id: 1, nome: "Boninho", imagemDesbloqueada: "stickerBoninho", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.")
-        let collection2 = Collection(id: 2, nome: "Rob BBB Laranja", imagemDesbloqueada: "stickerBoninho", imagemBloqueada: "imagemBloqueada", objetos: "RobBBB", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.")
-        let collection3 = Collection(id: 3, nome: "Cacto Lider", imagemDesbloqueada: "stickerBoninho", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.")
-        let collection4 = Collection(id: 4, nome: "Rob BBB Laranja", imagemDesbloqueada: "stickerBoninho", imagemBloqueada: "imagemBloqueada", objetos: "RobBBB", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.")
-        let collection5 = Collection(id: 5, nome: "Cacto Lider", imagemDesbloqueada: "stickerBoninho", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.")
-        let collection6 = Collection(id: 5, nome: "Cacto Lider", imagemDesbloqueada: "stickerBoninho", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.")
+        let collection1 = Collection(id: 1, nome: "Boninho", imagemDesbloqueada: "stickerBoninho", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "BBB", stickerScore: 10)
+        let collection2 = Collection(id: 2, nome: "Rob BBB Laranja", imagemDesbloqueada: "stickerBoninho", imagemBloqueada: "imagemBloqueada", objetos: "RobBBB", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "BBB", stickerScore: 10)
+        let collection3 = Collection(id: 3, nome: "Cacto Lider", imagemDesbloqueada: "stickerBoninho", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "BBB", stickerScore: 10)
+        let collection4 = Collection(id: 4, nome: "Rob BBB Laranja", imagemDesbloqueada: "stickerBoninho", imagemBloqueada: "imagemBloqueada", objetos: "RobBBB", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "BBB", stickerScore: 10)
+        let collection5 = Collection(id: 5, nome: "Cacto Lider", imagemDesbloqueada: "stickerBoninho", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "BBB", stickerScore: 10)
+        let collection6 = Collection(id: 6, nome: "Cacto Lider", imagemDesbloqueada: "stickerBoninho", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "BBB", stickerScore: 10)
         
 
                        
 //                       model album
-                       models.append(Model(id: 1, text: "BBB", imageName: "image_1", imageDetails: "bbb1", figurinhas: [collection1,collection2,collection3,collection4,collection5,collection6,collection1, collection6]))
+                       models.append(Model(id: 1, text: "BBB", imageName: "image_1", imageDetails: "bbb1", figurinhas: [collection1,collection2,collection3,collection4,collection5,collection6]))
                        models.append(Model(id: 2, text: "Tunel do amor", imageName: "image_2", imageDetails: "bbb1", figurinhas: [collection2,collection1,collection3,collection4,collection5]))
                        models.append(Model(id: 3, text: "No limite", imageName: "image_3", imageDetails: "bbb1", figurinhas: [collection1,collection2,collection3,collection4,collection5]))
                        models.append(Model(id: 4, text: "The voice", imageName: "image_4", imageDetails: "bbb1", figurinhas: [collection1,collection2,collection3,collection4,collection5]))
                        models.append(Model(id: 5, text: "The masked singer", imageName: "image_5", imageDetails: "bbb1", figurinhas: [collection1,collection2,collection3,collection4,collection5]))
        
                        //recents
-        recents.append(ModelRecents(image: "bbb3", title: "Cacto", legend: "big brotherbrasil", redeemedStickerID: 1))
-        recents.append(ModelRecents(image: "bbb3", title: "Cacto 4", legend: "big brother brasil", redeemedStickerID: 1))
-        recents.append(ModelRecents(image: "bbb3", title: "Cacto 4", legend: "big brother brasil", redeemedStickerID: 1))
-        recents.append(ModelRecents(image: "bbb3", title: "Cacto 3", legend: "big brother brasil", redeemedStickerID: 1))
-        recents.append(ModelRecents(image: "bbb3", title: "Cacto lider", legend: "big brother brasil", redeemedStickerID: 1))
-        recents.append(ModelRecents(image: "bbb3", title: "Cacto lider", legend: "big brother brasil", redeemedStickerID: 1))
+        recents.append(ModelRecents(id: 1, nome: "Boninho", imagemDesbloqueada: "stickerBoninho", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "bbb", stickerScore: 10))
+        recents.append(ModelRecents(id: 2, nome: "Rob BBB Laranja", imagemDesbloqueada: "stickerBoninho", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "bbb", stickerScore: 10))
+        recents.append(ModelRecents(id: 3, nome: "Cacto Lider", imagemDesbloqueada: "stickerBoninho", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "bbb", stickerScore: 10))
+        recents.append(ModelRecents(id: 4, nome: "Rob BBB Laranja", imagemDesbloqueada: "stickerBoninho", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "bbb", stickerScore: 10))
+        recents.append(ModelRecents(id: 5, nome: "Cacto Lider", imagemDesbloqueada: "stickerBoninho", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "bbb", stickerScore: 10))
+        recents.append(ModelRecents(id: 6, nome: "Cacto Lider", imagemDesbloqueada: "stickerBoninho", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "bbb", stickerScore: 10))
 
 
     }
@@ -168,6 +181,8 @@ extension CollectionViewController: UITableViewDelegate, UITableViewDataSource {
         return 200.0
     }
 
+    
+    
 
 
 }
