@@ -33,6 +33,18 @@ class DetailsTableViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPage
         self.tableView.backgroundColor = .backgroundPage
+        
+        let backButton = UIBarButtonItem(title: "Álbum BBB", style: .plain, target: self, action: #selector(backButtonTapped))
+           self.navigationItem.leftBarButtonItem = backButton
+
+        //botoes de modal na barra de navegacao
+        let buttonRanking = CustomBarButton(image: UIImage(named: "ranking")!, target: self, action: #selector(buttonRankingTapped))
+        let buttonReward = CustomBarButton(image: UIImage(named: "recompensas")!, target: self, action: #selector(buttonRewardTapped))
+        let buttonSearch = CustomBarButton(image: UIImage(named: "pesquisar")!, target: self, action: #selector(buttonSearchTapped))
+        let buttonProfile = CustomBarButton(image: UIImage(named: "pesquisar")!, target: self, action: #selector(buttonProfileTapped))
+        
+        navigationItem.rightBarButtonItems = [buttonProfile,buttonSearch,buttonReward,buttonRanking]
+        //
 
         view.addSubview(backgroundImage)
         view.addSubview(secondImage)
@@ -58,6 +70,30 @@ class DetailsTableViewController: UIViewController {
         tableView.register(UINib(nibName: "GalerysTableViewCell", bundle: nil), forCellReuseIdentifier: "GalerysTableViewCell")
         tableView.dataSource = self
         tableView.delegate = self
+    }
+    
+    @objc private func backButtonTapped() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    //funcoes do botao de navegacao
+    @objc func buttonRankingTapped() {
+        let modalViewController = RankingViewController()
+        self.present(modalViewController, animated: true, completion: nil)
+    }
+    
+    @objc func buttonRewardTapped() {
+        let modalViewController = RewardViewController()
+        self.present(modalViewController, animated: true, completion: nil)
+    }
+    
+    @objc func buttonSearchTapped() {
+        print("Botão de imagem tocado!")
+    }
+    
+    @objc func buttonProfileTapped() {
+        // Ação a ser executada quando o botão é tocado
+        print("Botão de imagem tocado!")
     }
 }
 

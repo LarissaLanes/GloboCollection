@@ -64,6 +64,9 @@ class InfoViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPage
         
+        let backButton = UIBarButtonItem(title: "Voltar", style: .plain, target: self, action: #selector(backButtonTapped))
+           self.navigationItem.leftBarButtonItem = backButton
+        
         // Adicione as visualizações à hierarquia de visualização
         view.addSubview(imageView)
         view.addSubview(titleLabel)
@@ -180,6 +183,13 @@ class InfoViewController: UIViewController {
           // Implemente a lógica para mostrar no perfil
           print("mostrei a imagem no perfil")
       }
+    
+    
+    @objc private func backButtonTapped() {
+        // Aqui você pode definir a ação a ser executada quando o botão "Voltar" for pressionado
+        // Por exemplo, voltar para a tela anterior
+        navigationController?.popViewController(animated: true)
+    }
     
     
     

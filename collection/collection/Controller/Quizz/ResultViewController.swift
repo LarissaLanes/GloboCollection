@@ -7,14 +7,12 @@
 
 import UIKit
 import FirebaseFirestore
+import FirebaseAuth
 
 class ResultViewController: UIViewController {
     
-    //    var quizResult: String?
     var canRedeem: Bool = false
     var collectionData: Collection?
-    
-    let userDefaults = UserDefaults.standard
     
     private let resultImageView: UIImageView = {
         let imageView = UIImageView()
@@ -113,64 +111,66 @@ class ResultViewController: UIViewController {
         ])
     }
     
-    private func configureButton() {
-        
-        if canRedeem == true{
-            redeemButton.setTitle("Resgatar", for: .normal)
-            redeemButton.addTarget(self, action: #selector(redeemButtonTapped), for: .touchUpInside)
-            
-            
-        }
-    }
-    
-    
     @objc private func redeemButtonTapped() {
-        if let stickerID = collectionData?.id {
-            print("ID da coleção encontrado: \(stickerID)")
-            
-            // Use a animação cross dissolve para suavizar a transição
-            UIView.transition(with: resultImageView, duration: 0.5, options: .transitionCrossDissolve, animations: {
-                self.resultImageView.image = UIImage(named: self.collectionData?.imagemDesbloqueada ?? "imagemBloqueada")
-            }, completion: nil)
-            
-            UIView.transition(with: stickerLabel, duration: 0.5, options: .transitionCrossDissolve, animations: {
-                self.stickerLabel.text = self.collectionData?.nome
-            }, completion: nil)
-
-            print("id guardado \(UserDefaults.standard.integer(forKey: "stickerResgatado\(stickerID)"))")
-            print("id do quizz guaradado \(UserDefaults.standard.integer(forKey: "quizCompleto\(stickerID)"))")
-            
-            //pontuacao de cada sticker salvo no firebase
-            
-            
-            if let userUID = UserDefaults.standard.string(forKey: "userUID") {
-                // Salve a pontuação do sticker no Firestore associada ao UID do usuário
-                let db = Firestore.firestore()
-                
-                db.collection("user_scores").document(userUID).setData([
-                    "stickerID\(stickerID)": stickerID,
-                    "stickerScore\(stickerID)": collectionData?.stickerScore ?? 0
-                ]) { (error) in
-                    if let error = error {
-                        print("Erro ao salvar a pontuação do sticker: \(error.localizedDescription)")
-                    } else {
-                        print("Pontuação do sticker salva com sucesso.")
-                    }
-                }
-            } else {
-                print("UID do usuário não encontrado.")
-            }
-
-        } else {
-            print("ID da coleção não encontrado.")
-        }
-    }
+           if let stickerID = collectionData?.id {
+               print("ID da coleção encontrado: \(stickerID)")
+               
+               // Use a animação cross dissolve para suavizar a transição
+               UIView.transition(with: resultImageView, duration: 0.5, options: .transitionCrossDissolve, animations: {
+                   self.resultImageView.image = UIImage(named: self.collectionData?.imagemDesbloqueada ?? "imagemBloqueada")
+               }, completion: nil)
+               
+               UIView.transition(with: stickerLabel, duration: 0.5, options: .transitionCrossDissolve, animations: {
+                   self.stickerLabel.text = self.collectionData?.nome
+               }, completion: nil)
+               
+               // Salve a pontuação do sticker no Firestore associada ao UID do usuário
+               if let userUID = UserDefaults.standard.string(forKey: "userUID") {
+                   let db = Firestore.firestore()
+                   let userScoresRef = db.collection("user_scores").document(userUID)
+                   
+                   // Crie um dicionário com a pontuação do sticker
+                   let stickerScore: [String: Any] = [
+                       "stickerID\(stickerID)": stickerID,
+                       "score\(stickerID)": collectionData?.stickerScore ?? 0
+                   ]
+                   
+                   // Verifique se o documento do usuário existe
+                   userScoresRef.getDocument { (document, error) in
+                       if let document = document, document.exists {
+                           // O documento do usuário existe, atualize a matriz de pontuações
+                           userScoresRef.updateData([
+                               "scores": FieldValue.arrayUnion([stickerScore])
+                           ]) { (error) in
+                               if let error = error {
+                                   print("Erro ao salvar a pontuação do sticker: \(error.localizedDescription)")
+                               } else {
+                                   print("Pontuação do sticker salva com sucesso.")
+                               }
+                           }
+                       } else {
+                           // O documento do usuário não existe, crie-o com a primeira pontuação
+                           userScoresRef.setData([
+                               "scores": [stickerScore]
+                           ]) { (error) in
+                               if let error = error {
+                                   print("Erro ao criar o documento do usuário: \(error.localizedDescription)")
+                               } else {
+                                   print("Documento do usuário criado com sucesso.")
+                               }
+                           }
+                       }
+                   }
+               } else {
+                   print("UID do usuário não encontrado.")
+               }
+           } else {
+               print("ID da coleção não encontrado.")
+           }
+       }
     
     @objc private func galeryButtonTapped() {
         let detailsTableController = TabBarController()
         navigationController?.pushViewController(detailsTableController, animated: true)
     }
 }
-
-
-

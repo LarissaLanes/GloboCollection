@@ -21,6 +21,8 @@
 		AE4B8EF92AC7298400A0BAEF /* ComponentScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4B8EF82AC7298400A0BAEF /* ComponentScreen.swift */; };
 		AE6A17072AB23D95001BE6BC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A17062AB23D95001BE6BC /* LoginViewController.swift */; };
 		AE6A17092AB23DC9001BE6BC /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A17082AB23DC9001BE6BC /* RegisterViewController.swift */; };
+		AE84E22C2AD49B42005CA108 /* RewardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE84E22B2AD49B42005CA108 /* RewardViewController.swift */; };
+		AE84E22E2AD49D27005CA108 /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE84E22D2AD49D27005CA108 /* RankingViewController.swift */; };
 		AE8CD6FD2AC71A47002F0537 /* RecentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8CD6FB2AC71A47002F0537 /* RecentTableViewCell.swift */; };
 		AE8CD6FE2AC71A47002F0537 /* RecentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE8CD6FC2AC71A47002F0537 /* RecentTableViewCell.xib */; };
 		AE8CD7012AC71A7B002F0537 /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8CD6FF2AC71A7B002F0537 /* CollectionTableViewCell.swift */; };
@@ -64,6 +66,8 @@
 		AE4B8EF82AC7298400A0BAEF /* ComponentScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentScreen.swift; sourceTree = "<group>"; };
 		AE6A17062AB23D95001BE6BC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AE6A17082AB23DC9001BE6BC /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		AE84E22B2AD49B42005CA108 /* RewardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardViewController.swift; sourceTree = "<group>"; };
+		AE84E22D2AD49D27005CA108 /* RankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		AE8CD6FB2AC71A47002F0537 /* RecentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentTableViewCell.swift; sourceTree = "<group>"; };
 		AE8CD6FC2AC71A47002F0537 /* RecentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecentTableViewCell.xib; sourceTree = "<group>"; };
 		AE8CD6FF2AC71A7B002F0537 /* CollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableViewCell.swift; sourceTree = "<group>"; };
@@ -142,6 +146,15 @@
 				AE6A17082AB23DC9001BE6BC /* RegisterViewController.swift */,
 			);
 			path = Register;
+			sourceTree = "<group>";
+		};
+		AE84E22A2AD49A9B005CA108 /* ScreenNavigations */ = {
+			isa = PBXGroup;
+			children = (
+				AE84E22B2AD49B42005CA108 /* RewardViewController.swift */,
+				AE84E22D2AD49D27005CA108 /* RankingViewController.swift */,
+			);
+			path = ScreenNavigations;
 			sourceTree = "<group>";
 		};
 		AE8CD6F72AC719E6002F0537 /* Recent */ = {
@@ -350,6 +363,7 @@
 		AEE2DDA42A9FD24E0040D789 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				AE84E22A2AD49A9B005CA108 /* ScreenNavigations */,
 				AE35FECB2AC8CB1C00B047B5 /* Quizz */,
 				AEE2DD922A9FBEA20040D789 /* ViewController.swift */,
 				AECDDA142ABE1EC700991AC0 /* Collection */,
@@ -513,9 +527,11 @@
 				AECDDA232ABE502A00991AC0 /* Stickes.swift in Sources */,
 				AEE2DD932A9FBEA20040D789 /* ViewController.swift in Sources */,
 				AE06CD3B2AB4DE5300073B00 /* Utilities.swift in Sources */,
+				AE84E22C2AD49B42005CA108 /* RewardViewController.swift in Sources */,
 				AEE2DD8F2A9FBEA20040D789 /* AppDelegate.swift in Sources */,
 				AECDDA352ABE709400991AC0 /* ErrorModel.swift in Sources */,
 				AE3F8C7F2ABE7693007267BB /* CollectionViewController.swift in Sources */,
+				AE84E22E2AD49D27005CA108 /* RankingViewController.swift in Sources */,
 				AE8CD7012AC71A7B002F0537 /* CollectionTableViewCell.swift in Sources */,
 				AE8CD6FD2AC71A47002F0537 /* RecentTableViewCell.swift in Sources */,
 				AE35FECF2AC8CB5400B047B5 /* Quiz2ViewController.swift in Sources */,
