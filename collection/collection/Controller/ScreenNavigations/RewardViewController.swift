@@ -11,7 +11,8 @@ class RewardViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "recompensas"
+        view.backgroundColor = .backgroundPage
+       
 
     }
     
