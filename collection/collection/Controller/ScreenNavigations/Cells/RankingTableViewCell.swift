@@ -27,7 +27,7 @@ class RankingTableViewCell: UITableViewCell {
         self.profilePicture.image = UIImage(named: configure.image)
         self.mail.text = configure.email
         self.name.text = configure.name
-        self.valueOfPorcent.text = "\(configure.porcent)"
+        self.valueOfPorcent.text = "\(configure.porcent)%"
     }
 
     

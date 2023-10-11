@@ -29,7 +29,7 @@ class CollectionItemCell: UICollectionViewCell {
 
         } else {
             image.image = UIImage(named: collection.imagemBloqueada)
-            titleImage.text = "sticker \(collection.id)"
+            titleImage.text = "Figurinha Bloqueada\(collection.id)"
 
         }
     }

@@ -1,9 +1,9 @@
 import UIKit
 
 class InfoViewController: UIViewController {
-    
+
     var collectionData: Collection?
-    
+
     // Adicione as visualizações para a imagem, o título, o objeto da imagem, o divisor e o texto
     private let imageView: UIImageView = {
         let imageView = UIImageView()
@@ -11,62 +11,88 @@ class InfoViewController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    
+
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .text // Mude a cor do texto para branco
+        label.textAlignment = .center // Centralize o texto
         return label
     }()
-    
+
     private let objectLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .text // Mude a cor do texto para branco
+        label.textAlignment = .center // Centralize o texto
+//        label.layer.borderWidth = 1
+//        label.layer.borderColor = UIColor.red.cgColor
+//        label.layer.cornerRadius = 5
+//        let margin: CGFloat = 20
+//        label.contentEdgeInsets = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
+        
+
         return label
     }()
-    
+
     private let dividerView: UIView = {
         let view = UIView()
         view.backgroundColor = .lightGray
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
+
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .text // Mude a cor do texto para branco
+        label.textAlignment = .center // Centralize o texto
+        
         return label
     }()
-    
+
     // Adicione um botão para iniciar o quiz
     private let startQuizButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Iniciar Quiz", for: .normal)
-        button.setTitleColor(.blue, for: .normal)
+        button.setTitle("Realizar quiz", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.borderWidth = 1
+        button.setTitleColor(.text, for: .normal) // Mude a cor do texto para branco
+        button.layer.borderColor = UIColor.red.cgColor
+        button.layer.cornerRadius = 5
+        let margin: CGFloat = 20
+        button.contentEdgeInsets = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
+        
         return button
     }()
-    
+
     private let showProfileButton: UIButton = {
-         let button = UIButton()
-         button.setTitle("Mostrar no Perfil", for: .normal)
-         button.setTitleColor(.blue, for: .normal)
-         button.translatesAutoresizingMaskIntoConstraints = false
+        let button = UIButton()
+        button.setTitle("Mostrar no Perfil", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitleColor(.text, for: .normal)
+        button.layer.borderColor = UIColor.red.cgColor
+        button.layer.cornerRadius = 5
+        button.layer.borderWidth = 1
+        let margin: CGFloat = 20 // Ajuste o valor conforme necessário
+        button.contentEdgeInsets = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
+    
          return button
      }()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPage
-        
+
+        // Adicione um botão de voltar
         let backButton = UIBarButtonItem(title: "Voltar", style: .plain, target: self, action: #selector(backButtonTapped))
-           self.navigationItem.leftBarButtonItem = backButton
-        
+        self.navigationItem.leftBarButtonItem = backButton
+
         // Adicione as visualizações à hierarquia de visualização
         view.addSubview(imageView)
         view.addSubview(titleLabel)
@@ -74,35 +100,37 @@ class InfoViewController: UIViewController {
         view.addSubview(dividerView)
         view.addSubview(descriptionLabel)
         view.addSubview(startQuizButton) // Adicione o botão
+//        view.addSubview(showProfileButton)
         
-        // Configure as restrições de layout
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
             imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             imageView.heightAnchor.constraint(equalToConstant: 200),
-            
+
             titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16),
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            
+
             objectLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
             objectLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             objectLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            
+
             dividerView.topAnchor.constraint(equalTo: objectLabel.bottomAnchor, constant: 16),
             dividerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             dividerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             dividerView.heightAnchor.constraint(equalToConstant: 1),
-            
+
             descriptionLabel.topAnchor.constraint(equalTo: dividerView.bottomAnchor, constant: 16),
             descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             descriptionLabel.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor, constant: -16),
-            
-            // Restrições para o botão
+
             startQuizButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 16),
             startQuizButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+//            showProfileButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 16),
+//            showProfileButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     
          
@@ -127,9 +155,9 @@ class InfoViewController: UIViewController {
 
             } else {
                 imageView.image = UIImage(named: collection.imagemBloqueada) // Substitua pela imagem real
-                titleLabel.text = "sticker\(collection.id)"
+                titleLabel.text = "Figurinha Bloqueada\(collection.id)"
                 objectLabel.text = ""
-                descriptionLabel.text = "faca um quizz para debloquear"
+                descriptionLabel.text = "Opa! Parece que você ainda não tem essa figurinha. Faça o quiz abaixo para ter a chance de resgatá-la ;-)"
 
             }
            
@@ -195,5 +223,4 @@ class InfoViewController: UIViewController {
     
     
     
-    // Resto da sua implementação da InfoCollectionViewController
 }

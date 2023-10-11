@@ -114,6 +114,6 @@ extension DetailsTableViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 900
+        return 3000
     }
 }

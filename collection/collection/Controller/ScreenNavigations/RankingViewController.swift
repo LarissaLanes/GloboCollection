@@ -1,31 +1,21 @@
-//
-//  RankingViewController.swift
-//  collection
-//
-//  Created by Larissa Lanes on 09/10/23.
-//
-
 import UIKit
+import FirebaseFirestore
+import FirebaseAuth
 
 struct User {
     var image: String
-    var name : String
+    var name: String
     var email: String
     var porcent: Int
+    var uid: String
 }
 
 class RankingViewController: UIViewController {
     
     let tableView = UITableView()
     
-    let usuarios = [
-        User(image: "bbb1", name: "lari", email: "lari@gmail", porcent: 67),
-        User(image: "bbb1", name: "stella", email: "lari@gmail", porcent: 10),
-        User(image: "bbb1", name: "pam", email: "lari@gmail", porcent: 78),
-        User(image: "bbb1", name: "larilari", email: "lari@gmail", porcent: 90),
-        User(image: "bbb1", name: "ju", email: "lari@gmail", porcent: 34),
-    ]
-
+    var usuarios = [User]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPage
@@ -33,12 +23,86 @@ class RankingViewController: UIViewController {
         view.addSubview(tableView)
         tableView.frame = view.bounds
         
-        tableView.register(UINib(nibName: "RankingTableViewCell", bundle: nil), forCellReuseIdentifier: "RankingTableViewCell");        tableView.dataSource = self
+        tableView.register(UINib(nibName: "RankingTableViewCell", bundle: nil), forCellReuseIdentifier: "RankingTableViewCell")
+        tableView.dataSource = self
         tableView.delegate = self
+        
+        // Chame a função fetchAllUsersFromFirestore para buscar os usuários
+        fetchAllUsersFromFirestore()
+    }
+    
+    
+    func fetchAllUsersFromFirestore() {
+        let db = Firestore.firestore()
+        let usersRef = db.collection("users")
+        
+        usersRef.getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("Erro ao buscar os dados dos usuários: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let documents = querySnapshot?.documents else {
+                print("Nenhum documento encontrado.")
+                return
+            }
+            
+            for document in documents {
+                if let data = document.data() as? [String: Any],
+                   let email = data["email"] as? String,
+                   let nickName = data["nick_name"] as? String,
+                   let uid = data["uid"] as? String {
+                    
+                    let user = User(image: "ranking", name: nickName, email: email, porcent: 0, uid: uid)
+                    self.usuarios.append(user)
+                }
+            }
+            
+            // Agora que você buscou todos os usuários, chame a função para calcular as porcentagens
+            self.calculatePorcentagesFromUserScores()
+        }
+    }
+    
+    func calculatePorcentagesFromUserScores() {
+        let db = Firestore.firestore()
+        let userScoresRef = db.collection("user_scores")
+        
+        for (index, user) in self.usuarios.enumerated() {
+            userScoresRef.document(user.uid).getDocument { (document, error) in
+                if let error = error {
+                    print("Erro ao buscar os dados de pontuação do usuário: \(error.localizedDescription)")
+                    return
+                }
+                
+                if let document = document, document.exists {
+                    if let scoresData = document.data(),
+                       let scores = scoresData["scores"] as? [[String: Any]] {
+                        
+                        var totalScore = 0
+                        for scoreData in scores {
+                            if let score = scoreData["score1"] as? Int {
+                                totalScore += score
+                            }
+                        }
+                        
+                        let percentage = Double(totalScore) / Double(user.porcent) * 100
+                        if percentage.isFinite {
+                            self.usuarios[index].porcent = Int(percentage)
+                        } else {
+                            // Lide com o caso em que o cálculo resulta em um valor infinito ou NaN, por exemplo, definindo um valor padrão.
+                            self.usuarios[index].porcent = 0 // Ou qualquer outro valor padrão desejado.
+                        }
+                        
+                        // Atualize a tabela com os dados atualizados dos usuários
+                        self.tableView.reloadData()
+                    }
+                }
+            }
+        }
     }
 }
 
-extension RankingViewController: UITableViewDelegate, UITableViewDataSource{
+extension RankingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return usuarios.count
@@ -48,12 +112,11 @@ extension RankingViewController: UITableViewDelegate, UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "RankingTableViewCell", for: indexPath) as! RankingTableViewCell
         
         cell.configure(with: usuarios[indexPath.row])
-                
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        140
+        return 130
     }
 }
-

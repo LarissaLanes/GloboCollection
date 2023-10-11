@@ -1,12 +1,21 @@
 import UIKit
+import FirebaseFirestore
 
 class Quiz2ViewController: UIViewController {
     
     var collectionData: Collection?
     var quizId: Int = 2
-    
     let userDefaults = UserDefaults.standard // Criar uma instância do UserDefaults
 
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.text = "Quiz BBB: Você já sabe tudo sobre as marcas? Teste os seus conhecimentos"
+        return label
+    }()
 
     private let questionLabel: UILabel = {
         let label = UILabel()
@@ -45,15 +54,15 @@ class Quiz2ViewController: UIViewController {
     }()
 
     private let questions = [
-        "Qual bbb?",
-        "Qual e teste 2 planeta do sistema solar?",
-        "Quem escreveu 'Dom Quixote'?"
+        "Quanto tempo durou a prova do lider patrocinada pelo Mc Donald's no BBB21?",
+        "O primeiro comercial gravado na casa pelo Mc Donald's promovia qual produto da marca?",
+        "O que o Mc Donald's ofereceu aos participantes na festa do pijama do BBB21?"
     ]
 
     private let correctAnswers = [
-        "Brasília",
-        "Júpiter",
-        "Miguel de Cervantes"
+        "3 horas",
+        "Big Mac",
+        "Comes e bebes"
     ]
 
     private var currentQuestionIndex = 0
@@ -62,25 +71,42 @@ class Quiz2ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        setupNavigationBar()
         setupUI()
         updateUI()
     }
-    
+
+    private func setupNavigationBar() {
+        // Configurar a imagem na barra de navegação
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
+        imageView.contentMode = .scaleAspectFit
+        let image = UIImage(named: "logo_globoplay") // Substitua "suaImagem" pelo nome da sua imagem
+        imageView.image = image
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: imageView)
+
+        // Configurar a cor de fundo da barra de navegação
+        navigationController?.navigationBar.barTintColor = .purple
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Oculta o botão de voltar na barra de navegação
         self.navigationItem.setHidesBackButton(true, animated: false)
     }
 
-
     private func setupUI() {
+        view.addSubview(titleLabel)
         view.addSubview(questionLabel)
         view.addSubview(option1Button)
         view.addSubview(option2Button)
         view.addSubview(option3Button)
 
         NSLayoutConstraint.activate([
-            questionLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+
+            questionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
             questionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             questionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
 
@@ -98,45 +124,28 @@ class Quiz2ViewController: UIViewController {
         ])
     }
 
-    // ...
     private func updateUI() {
         if currentQuestionIndex < questions.count {
             questionLabel.text = questions[currentQuestionIndex]
             option1Button.setTitle("A) \(correctAnswers[currentQuestionIndex])", for: .normal)
-            option2Button.setTitle("B) Júpiter", for: .normal)
-            option3Button.setTitle("C) Miguel de Cervantes", for: .normal)
+            option2Button.setTitle("B) 5 horas", for: .normal)
+            option3Button.setTitle("C) Quarteirão", for: .normal)
         } else {
             if correctAnswersCount >= 2 {
                 // Redirecione para outra tela aqui
                 let resultViewController = ResultViewController()
                 resultViewController.collectionData = collectionData // Passe os dados da coleção
-
-//                resultViewController.quizResult = "Quiz concluído com sucesso!"
-                resultViewController.canRedeem = true // Mostrar botão de resgatar
-                
-//                if let stickerID = collectionData?.id {
-//                    userDefaults.set(stickerID, forKey: "stickerResgatado")
-//                }
-                
                 userDefaults.set(quizId, forKey: "quizCompleto2")
                 userDefaults.set(collectionData?.id, forKey: "stickerResgatado2")
-//                userDefaults.set(collectionData?.id, forKey: "stickerResgatado2")
-                
                 navigationController?.pushViewController(resultViewController, animated: true)
             } else {
                 // Redirecione para outra tela aqui
                 let erroViewController = ErrorViewController()
                 erroViewController.collectionData = collectionData // Passe os dados da coleção
-
-//                resultViewController.quizResult = "Quiz não concluído. Tente novamente."
-                erroViewController.canRedeem = false // Mostrar botão de reiniciar
                 navigationController?.pushViewController(erroViewController, animated: true)
             }
-
         }
     }
-    
-
 
     @objc private func optionSelected(_ sender: UIButton) {
         let selectedAnswer = sender.currentTitle ?? ""
@@ -163,14 +172,11 @@ class Quiz2ViewController: UIViewController {
                 resultViewController.collectionData = collectionData // Passe os dados da coleção
                 userDefaults.set(quizId, forKey: "quizCompleto2")
                 userDefaults.set(collectionData?.id, forKey: "stickerResgatado2")
-//                resultViewController.quizResult = "Quiz concluído com sucessooooooo!"
                 navigationController?.pushViewController(resultViewController, animated: true)
             } else {
                 // Redirecione para outra tela aqui
                 let erroViewController = ErrorViewController()
                 erroViewController.collectionData = collectionData // Passe os dados da coleção
-
-//                resultViewController.quizResult = "Quiz não concluído. Tente novamente."
                 navigationController?.pushViewController(erroViewController, animated: true)
             }
         }

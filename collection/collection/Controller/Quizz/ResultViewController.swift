@@ -132,7 +132,8 @@ class ResultViewController: UIViewController {
                    // Crie um dicionário com a pontuação do sticker
                    let stickerScore: [String: Any] = [
                        "stickerID\(stickerID)": stickerID,
-                       "score\(stickerID)": collectionData?.stickerScore ?? 0
+                       "score\(stickerID)": collectionData?.stickerScore ?? 0,
+                       "uid": userUID
                    ]
                    
                    // Verifique se o documento do usuário existe

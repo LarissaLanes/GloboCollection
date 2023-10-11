@@ -26,13 +26,14 @@ class MyRecentCollectionViewCell: UICollectionViewCell {
 
         if stickerID == recents.id {
             myImageView.image = UIImage(named: recents.imagemDesbloqueada)
-            title.text = recents.nome
-            subTitle.text = recents.album
+//            title.text = recents.nome
+//            subTitle.text = recents.album
+            
 
         } else {
             myImageView.image = UIImage(named: "")
-            title.text = ""
-            subTitle.text = ""
+//            title.text = ""
+//            subTitle.text = ""
 
         }
     }

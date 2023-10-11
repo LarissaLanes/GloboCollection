@@ -28,8 +28,8 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="hv5-uG-Ahl">
-                        <rect key="frame" x="20" y="56.333333333333336" width="769" height="126.66666666666666"/>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" indicatorStyle="white" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="hv5-uG-Ahl">
+                        <rect key="frame" x="20" y="47.333333333333329" width="769" height="154.66666666666669"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="t8I-kf-iYj">
                             <size key="itemSize" width="128" height="128"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -39,9 +39,9 @@
                     </collectionView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="hv5-uG-Ahl" firstAttribute="top" secondItem="5cE-aw-leW" secondAttribute="bottom" constant="10" id="Raz-I4-Meg"/>
+                    <constraint firstItem="hv5-uG-Ahl" firstAttribute="top" secondItem="5cE-aw-leW" secondAttribute="bottom" constant="1" id="Raz-I4-Meg"/>
                     <constraint firstItem="5cE-aw-leW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="brH-qO-mYl"/>
-                    <constraint firstAttribute="bottom" secondItem="hv5-uG-Ahl" secondAttribute="bottom" constant="20" id="eWQ-WF-HgQ"/>
+                    <constraint firstAttribute="bottom" secondItem="hv5-uG-Ahl" secondAttribute="bottom" constant="1" id="eWQ-WF-HgQ"/>
                     <constraint firstItem="5cE-aw-leW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="mfq-pg-W0A"/>
                     <constraint firstItem="hv5-uG-Ahl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="oCd-Mz-MZS"/>
                     <constraint firstAttribute="trailing" secondItem="hv5-uG-Ahl" secondAttribute="trailing" constant="20" id="rR1-f8-NDN"/>

@@ -79,26 +79,23 @@ class RegisterViewController: UIViewController {
             return "preste atencao aos espacos"
         }
         //verifica se a senha esta segura
-        let cleanedPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        if Utilities.isPasswordValid(cleanedPassword) == false {
-            
-            return "por favor verifique sua senha e corriga se atentando a 8 caracteres"
-        }
+//        let cleanedPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+//        if Utilities.isPasswordValid(cleanedPassword) == false {
+//
+//            return "por favor verifique sua senha e corriga se atentando a 8 caracteres"
+//        }
         
         return nil
     }
-        // MARK: - UI Setup
-        
+    // MARK: - UI Setup
     private func setupUI() {
         view.backgroundColor = .white
         
-        // Add subviews
         view.addSubview(usernameTextField)
         view.addSubview(emailTextField)
         view.addSubview(passwordTextField)
         view.addSubview(signupButton)
         
-        // Constraints
         NSLayoutConstraint.activate([
             usernameTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             usernameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
@@ -116,17 +113,10 @@ class RegisterViewController: UIViewController {
             signupButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             signupButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             signupButton.heightAnchor.constraint(equalToConstant: 40),
-            
-            
         ])
-        
-        // Target action for signup button
-        signupButton.addTarget(self, action: #selector(signupButtonTapped), for: .touchUpInside)
-        
+            signupButton.addTarget(self, action: #selector(signupButtonTapped), for: .touchUpInside)
     }
-        
-        // MARK: - Actions
-        
+    // MARK: - Actions
     @objc private func signupButtonTapped() {
             
         let error = validateFields()
@@ -147,7 +137,7 @@ class RegisterViewController: UIViewController {
                 
                 if err != nil {
                     
-                    print("erro ao criar o usuario")
+                    print("erro ao criar o usuario\(err)")
                     
                 }else{
                     
@@ -157,12 +147,11 @@ class RegisterViewController: UIViewController {
                         let uid = user.uid
                         UserDefaults.standard.set(uid, forKey: "userUID")
                         print(UserDefaults.standard.set(uid, forKey: "userUID")
-)
-                    }
+                    )}
                     
                     let db = Firestore.firestore()
                     
-                    db.collection("users").addDocument(data: ["nick_name" : userName, "uid" : result!.user.uid]) { (error) in
+                    db.collection("users").addDocument(data: ["nick_name" : userName, "email" : email, "uid" : result!.user.uid]) { (error) in
                         
                         if error != nil {
                             print("deu error, usuario nao cadastrado")
@@ -172,20 +161,6 @@ class RegisterViewController: UIViewController {
                 }
             }
         }
-            
-            ///funcao antiga
-//            self.auth?.createUser(withEmail: email, password: pass, completion: { (result, error ) in
-//
-//                if error != nil{
-//                    self.alert(title: "atencao", message: "falha ao cadastrar")
-//                    print("falha ao cadastrar")
-//
-//                }else{
-//                    self.alert(title: "parabens", message: "sucesso ao cadastrar")
-//                    print("sucesso ao cadastrar")
-//                }
-//
-//            })
     }
     
     func transitionToTabBar() {

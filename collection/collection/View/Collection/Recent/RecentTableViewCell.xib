@@ -17,12 +17,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="787" height="258"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Bh-gP-HIG">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Bh-gP-HIG">
                         <rect key="frame" x="0.0" y="0.0" width="787" height="258"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </view>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="yN7-Wg-k6v">
-                        <rect key="frame" x="20" y="46.333333333333329" width="747" height="191.66666666666669"/>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="yN7-Wg-k6v">
+                        <rect key="frame" x="20" y="38.333333333333329" width="747" height="219.66666666666669"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jUg-v1-LEs">
                             <size key="itemSize" width="128" height="128"/>
@@ -40,13 +39,16 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="2pc-sL-sMk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="LEs-jt-4QR"/>
-                    <constraint firstAttribute="bottom" secondItem="yN7-Wg-k6v" secondAttribute="bottom" constant="20" id="LP2-c4-POa"/>
+                    <constraint firstAttribute="bottom" secondItem="yN7-Wg-k6v" secondAttribute="bottom" id="LP2-c4-POa"/>
                     <constraint firstAttribute="trailing" secondItem="yN7-Wg-k6v" secondAttribute="trailing" constant="20" id="QGY-Ry-JyO"/>
-                    <constraint firstItem="yN7-Wg-k6v" firstAttribute="top" secondItem="2pc-sL-sMk" secondAttribute="bottom" constant="10" id="TUR-jH-ZcJ"/>
+                    <constraint firstItem="yN7-Wg-k6v" firstAttribute="centerX" secondItem="5Bh-gP-HIG" secondAttribute="centerX" id="VsR-lL-nlG"/>
                     <constraint firstItem="2pc-sL-sMk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="WCJ-mI-f0A"/>
+                    <constraint firstItem="5Bh-gP-HIG" firstAttribute="bottom" secondItem="yN7-Wg-k6v" secondAttribute="bottom" id="ZAb-18-xYy"/>
                     <constraint firstAttribute="trailing" secondItem="2pc-sL-sMk" secondAttribute="trailing" id="arD-vP-h8Y"/>
                     <constraint firstItem="yN7-Wg-k6v" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="asJ-v1-eaX"/>
-                    <constraint firstItem="yN7-Wg-k6v" firstAttribute="top" secondItem="2pc-sL-sMk" secondAttribute="bottom" constant="10" id="zFH-R5-sue"/>
+                    <constraint firstItem="yN7-Wg-k6v" firstAttribute="top" secondItem="2pc-sL-sMk" secondAttribute="bottom" constant="2.0000000000000284" id="hWU-6X-Y5T"/>
+                    <constraint firstItem="5Bh-gP-HIG" firstAttribute="trailing" secondItem="2pc-sL-sMk" secondAttribute="trailing" id="p3Y-AK-wXX"/>
+                    <constraint firstItem="5Bh-gP-HIG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="yh1-Ul-sSK"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

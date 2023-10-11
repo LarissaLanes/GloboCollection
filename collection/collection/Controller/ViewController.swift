@@ -41,10 +41,10 @@ class TabBarController: UITabBarController {
         // Defina a cor de tinta para o ícone do item selecionado (por exemplo, vermelho)
         tabBar.tintColor = .text
         //apenas pq vao ser Nvaigation controllers se nao forem precisa apenas instanciar diretamente no array de controllers
-        let homeView = UINavigationController(rootViewController: HomeViewController())
-        let MyView = UINavigationController(rootViewController: MyViewController())
-        let OptionView = UINavigationController(rootViewController: OptionViewController())
-        let DownloadsView = UINavigationController(rootViewController: DownloadsViewController())
+        let homeView = UINavigationController(rootViewController: CollectionViewController())
+        let MyView = UINavigationController(rootViewController: CollectionViewController())
+        let OptionView = UINavigationController(rootViewController: CollectionViewController())
+        let DownloadsView = UINavigationController(rootViewController: CollectionViewController())
         let collectionView = UINavigationController(rootViewController: CollectionViewController())
         
         self.setViewControllers([homeView,OptionView,collectionView,MyView,DownloadsView], animated: false)

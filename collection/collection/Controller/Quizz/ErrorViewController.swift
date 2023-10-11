@@ -91,10 +91,23 @@ class ErrorViewController: UIViewController {
     @objc private func restartButtonTapped() {
         print("botao de recomecar o quizz pressionado")
         
-        
-        let infoViewController = Quiz1ViewController()
-//                resultViewController.quizResult = "Quiz não concluído. Tente novamente."
-        navigationController?.pushViewController(infoViewController, animated: true)
+        guard let collection = collectionData else {
+        return
+        }
+
+        // Com base no ID da coleção, redirecione para o quiz apropriado
+        switch collection.id {
+        case 1:
+        let quiz1ViewController = Quiz1ViewController()
+            navigationController?.pushViewController(quiz1ViewController, animated: true)
+
+        case 2:
+        let quiz2ViewController = Quiz2ViewController()
+            navigationController?.pushViewController(quiz2ViewController, animated: true)
+
+        default:
+        break
+        }
     }
 }
 

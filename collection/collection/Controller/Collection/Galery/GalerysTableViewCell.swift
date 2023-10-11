@@ -18,18 +18,20 @@ class GalerysTableViewCell: UITableViewCell {
         self.collectionView.backgroundColor = .backgroundPage
 
         // Configurar o layout da collectionView para exibir duas células por linha
-//        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-//            flowLayout.scrollDirection = .vertical
-//            let numberOfItemsPerRow: CGFloat = 2
-//            let spacingBetweenCells: CGFloat = 8 // Espaçamento entre as células
-//
-//            let totalSpacing = (2 * spacingBetweenCells) + ((numberOfItemsPerRow - 1) * spacingBetweenCells)
-//            let itemWidth = (collectionView.bounds.width - totalSpacing) / numberOfItemsPerRow
-//
-//            flowLayout.itemSize = CGSize(width: itemWidth, height: itemWidth)
+        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.scrollDirection = .vertical
+            let numberOfItemsPerRow: CGFloat = 3
+            let spacingBetweenCells: CGFloat = 0 // Espaçamento entre as células
+
+            let totalSpacing = (numberOfItemsPerRow - 1) * spacingBetweenCells
+            let itemWidth = (collectionView.bounds.width - totalSpacing) / numberOfItemsPerRow
+
+            flowLayout.itemSize = CGSize(width: itemWidth, height: itemWidth)
 //            flowLayout.minimumInteritemSpacing = spacingBetweenCells
 //            flowLayout.minimumLineSpacing = spacingBetweenCells
-//        }
+            
+            
+        }
 
         collectionView.register(UINib(nibName: "CollectionItemCell", bundle: nil), forCellWithReuseIdentifier: "CollectionItemCell")
         collectionView.delegate = self
