@@ -19,6 +19,7 @@
 		AE4B8EF62AC7208200A0BAEF /* CollectionItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4B8EF42AC7208200A0BAEF /* CollectionItemCell.swift */; };
 		AE4B8EF72AC7208200A0BAEF /* CollectionItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE4B8EF52AC7208200A0BAEF /* CollectionItemCell.xib */; };
 		AE4B8EF92AC7298400A0BAEF /* ComponentScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4B8EF82AC7298400A0BAEF /* ComponentScreen.swift */; };
+		AE58156B2AD720D100ED9298 /* Quiz3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE58156A2AD720D100ED9298 /* Quiz3ViewController.swift */; };
 		AE6A17072AB23D95001BE6BC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A17062AB23D95001BE6BC /* LoginViewController.swift */; };
 		AE6A17092AB23DC9001BE6BC /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A17082AB23DC9001BE6BC /* RegisterViewController.swift */; };
 		AE84E22C2AD49B42005CA108 /* RewardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE84E22B2AD49B42005CA108 /* RewardViewController.swift */; };
@@ -66,6 +67,7 @@
 		AE4B8EF42AC7208200A0BAEF /* CollectionItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionItemCell.swift; sourceTree = "<group>"; };
 		AE4B8EF52AC7208200A0BAEF /* CollectionItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionItemCell.xib; sourceTree = "<group>"; };
 		AE4B8EF82AC7298400A0BAEF /* ComponentScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentScreen.swift; sourceTree = "<group>"; };
+		AE58156A2AD720D100ED9298 /* Quiz3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz3ViewController.swift; sourceTree = "<group>"; };
 		AE6A17062AB23D95001BE6BC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AE6A17082AB23DC9001BE6BC /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		AE84E22B2AD49B42005CA108 /* RewardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardViewController.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 			children = (
 				AE35FECC2AC8CB4300B047B5 /* Quiz1ViewController.swift */,
 				AE35FECE2AC8CB5400B047B5 /* Quiz2ViewController.swift */,
+				AE58156A2AD720D100ED9298 /* Quiz3ViewController.swift */,
 				AE35FED02AC8D01300B047B5 /* ResultViewController.swift */,
 				AE35FED42AC9DC3E00B047B5 /* ErrorViewController.swift */,
 				AEED251F2ACC8CEA00FF89D6 /* WebViewController.swift */,
@@ -557,6 +560,7 @@
 				AE3F8C7F2ABE7693007267BB /* CollectionViewController.swift in Sources */,
 				AE84E22E2AD49D27005CA108 /* RankingViewController.swift in Sources */,
 				AE8CD7012AC71A7B002F0537 /* CollectionTableViewCell.swift in Sources */,
+				AE58156B2AD720D100ED9298 /* Quiz3ViewController.swift in Sources */,
 				AE8CD6FD2AC71A47002F0537 /* RecentTableViewCell.swift in Sources */,
 				AE35FECF2AC8CB5400B047B5 /* Quiz2ViewController.swift in Sources */,
 				AEE2DD912A9FBEA20040D789 /* SceneDelegate.swift in Sources */,

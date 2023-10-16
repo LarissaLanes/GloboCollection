@@ -18,32 +18,43 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Mdn-M3-bVd">
-                        <rect key="frame" x="0.0" y="0.0" width="592" height="762"/>
+                        <rect key="frame" x="0.0" y="0.0" width="592" height="758.33333333333337"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cacto lider" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkb-qm-p5q">
-                        <rect key="frame" x="10" y="782" width="572" height="18"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                        <color key="textColor" systemColor="opaqueSeparatorColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="uSr-iz-sAP">
+                        <rect key="frame" x="0.0" y="778.33333333333337" width="592" height="37.666666666666629"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZEe-ID-DCa">
+                                <rect key="frame" x="283" y="0.0" width="26.333333333333314" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cacto lider" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkb-qm-p5q">
+                                <rect key="frame" x="261.66666666666669" y="22" width="68.666666666666686" height="15.666666666666664"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                <color key="textColor" systemColor="opaqueSeparatorColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="gkb-qm-p5q" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="EDI-JY-Srm"/>
+                <constraint firstItem="uSr-iz-sAP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="3dt-O0-oL5"/>
                 <constraint firstItem="Mdn-M3-bVd" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="EbM-zJ-9CG"/>
                 <constraint firstItem="Mdn-M3-bVd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="GQQ-Zw-5DE"/>
-                <constraint firstItem="gkb-qm-p5q" firstAttribute="top" secondItem="Mdn-M3-bVd" secondAttribute="bottom" constant="20" id="R9S-ve-Mg2"/>
-                <constraint firstAttribute="trailing" secondItem="gkb-qm-p5q" secondAttribute="trailing" constant="10" id="TFz-Pt-MAa"/>
-                <constraint firstAttribute="bottom" secondItem="gkb-qm-p5q" secondAttribute="bottom" constant="26" id="b3E-jG-g4O"/>
+                <constraint firstAttribute="trailing" secondItem="uSr-iz-sAP" secondAttribute="trailing" id="R01-HM-fOZ"/>
+                <constraint firstItem="uSr-iz-sAP" firstAttribute="top" secondItem="Mdn-M3-bVd" secondAttribute="bottom" constant="20" id="Rk4-tc-r6y"/>
+                <constraint firstAttribute="bottom" secondItem="uSr-iz-sAP" secondAttribute="bottom" constant="10" id="ckS-uT-iNB"/>
                 <constraint firstItem="Mdn-M3-bVd" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="dAO-yk-NKs"/>
-                <constraint firstItem="gkb-qm-p5q" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="rJi-f6-e8n"/>
                 <constraint firstAttribute="trailing" secondItem="Mdn-M3-bVd" secondAttribute="trailing" id="yUk-gL-a8W"/>
             </constraints>
             <size key="customSize" width="592" height="826"/>
             <connections>
                 <outlet property="image" destination="Mdn-M3-bVd" id="5no-ay-haM"/>
-                <outlet property="titleImage" destination="gkb-qm-p5q" id="nh4-Rz-HyO"/>
+                <outlet property="raridade" destination="ZEe-ID-DCa" id="eff-1X-YdF"/>
+                <outlet property="titleImage" destination="gkb-qm-p5q" id="6dy-rD-A1z"/>
             </connections>
             <point key="canvasLocation" x="456.48854961832058" y="16.901408450704228"/>
         </collectionViewCell>

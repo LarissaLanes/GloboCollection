@@ -57,11 +57,9 @@ extension GalerysTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedCollection = collections[indexPath.item]
 
-        // Crie uma instância do InfoViewController e configure-a com os dados da coleção selecionada
         let infoViewController = InfoViewController()
         infoViewController.collectionData = selectedCollection
 
-        // Use o controlador de navegação existente para empurrar a InfoViewController na pilha
         if let navigationController = findNavigationController() {
             navigationController.pushViewController(infoViewController, animated: true)
         }

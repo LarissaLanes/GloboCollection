@@ -10,6 +10,7 @@ import UIKit
 class CollectionItemCell: UICollectionViewCell {
 
     @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var raridade: UILabel!
     @IBOutlet weak var titleImage: UILabel!
     
     static let identifier = "CollectionItemCell"
@@ -26,10 +27,22 @@ class CollectionItemCell: UICollectionViewCell {
             print("id: \(stickerID)")
             image.image = UIImage(named: collection.imagemDesbloqueada)
             titleImage.text = collection.nome
+            
+            if collection.raridade == true{
+                raridade.text = "RARA"
+            }else{
+                raridade.text = "NORMAL"
+            }
 
         } else {
             image.image = UIImage(named: collection.imagemBloqueada)
             titleImage.text = "Figurinha Bloqueada\(collection.id)"
+            
+            if collection.raridade == true{
+                raridade.text = "RARA"
+            }else{
+                raridade.text = "NORMAL"
+            }
 
         }
     }

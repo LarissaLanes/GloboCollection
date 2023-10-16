@@ -150,15 +150,24 @@ class InfoViewController: UIViewController {
                 print("id: \(stickerID)")
                 imageView.image = UIImage(named: collection.imagemDesbloqueada) // Substitua pela imagem real
                 titleLabel.text = collection.nome
-                objectLabel.text = collection.objetos
                 descriptionLabel.text = collection.descricao
+                
+                if collection.raridade == true {
+                    objectLabel.text = "RARA"
+                }else{
+                    objectLabel.text = "NORMAL"
+                }
 
             } else {
                 imageView.image = UIImage(named: collection.imagemBloqueada) // Substitua pela imagem real
                 titleLabel.text = "Figurinha Bloqueada\(collection.id)"
-                objectLabel.text = ""
                 descriptionLabel.text = "Opa! Parece que você ainda não tem essa figurinha. Faça o quiz abaixo para ter a chance de resgatá-la ;-)"
 
+                if collection.raridade == true {
+                    objectLabel.text = "RARA"
+                }else{
+                    objectLabel.text = "NORMAL"
+                }
             }
            
             

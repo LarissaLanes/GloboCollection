@@ -38,7 +38,7 @@ class TabBarController: UITabBarController {
 
     private func setupTabBarController(){
         
-        // Defina a cor de tinta para o ícone do item selecionado (por exemplo, vermelho)
+        //cor do icon
         tabBar.tintColor = .text
         //apenas pq vao ser Nvaigation controllers se nao forem precisa apenas instanciar diretamente no array de controllers
         let homeView = UINavigationController(rootViewController: CollectionViewController())

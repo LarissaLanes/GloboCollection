@@ -22,17 +22,19 @@ struct Collection {
     let nome: String
     let imagemDesbloqueada: String
     let imagemBloqueada: String
-    let objetos: String
+    let categoria: String
+    let raridade: Bool
     let descricao: String
     let album: String
     let stickerScore: Int
     
-    init(id: Int, nome: String, imagemDesbloqueada: String, imagemBloqueada: String, objetos: String, descricao: String, album: String, stickerScore: Int) {
+    init(id: Int, nome: String, imagemDesbloqueada: String, imagemBloqueada: String, categoria: String, raridade: Bool, descricao: String, album: String, stickerScore: Int) {
         self.id = id
         self.nome = nome
         self.imagemDesbloqueada = imagemDesbloqueada
         self.imagemBloqueada = imagemBloqueada
-        self.objetos = objetos
+        self.categoria = categoria
+        self.raridade = raridade
         self.descricao = descricao
         self.album  = album
         self.stickerScore = stickerScore
@@ -45,17 +47,19 @@ struct ModelRecents {
     let nome: String
     let imagemDesbloqueada: String
     let imagemBloqueada: String
-    let objetos: String
+    let categoria: String
+    let raridade: Bool
     let descricao: String
     let album: String
     let stickerScore: Int // Adicione esta propriedade
 
-    init(id: Int, nome: String, imagemDesbloqueada: String, imagemBloqueada: String, objetos: String, descricao: String, album: String, stickerScore: Int) {
+    init(id: Int, nome: String, imagemDesbloqueada: String, imagemBloqueada: String, categoria: String, raridade: Bool, descricao: String, album: String, stickerScore: Int) {
         self.id = id
         self.nome = nome
         self.imagemDesbloqueada = imagemDesbloqueada
         self.imagemBloqueada = imagemBloqueada
-        self.objetos = objetos
+        self.categoria = categoria
+        self.raridade = raridade
         self.descricao = descricao
         self.album = album
         self.stickerScore = stickerScore
@@ -153,20 +157,20 @@ class CollectionViewController: UIViewController {
                
                //dados do array de figurinhas
                //figurinhas
-        let collection1 = Collection(id: 1, nome: "RoBBB Mau", imagemDesbloqueada: "url_1", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "RoBBB Mau, a personificação do Castigo do Monstro. Nele, a produção determina ações desconfortáveis ao longo de todo um final de semana.", album: "BBB", stickerScore: 10)
-        let collection2 = Collection(id: 2, nome: "McDonald’s", imagemDesbloqueada: "url_2", imagemBloqueada: "imagemBloqueada", objetos: "RobBBB", descricao: "Patrocinador oficial do BBB, transformando lanches em estrelas do reality show mais saboroso! Quem criará a próxima Méquizice surpreendente? 🍔✨", album: "BBB", stickerScore: 10)
-        let collection3 = Collection(id: 3, nome: "Karol Conká", imagemDesbloqueada: "url_3", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "BBB", stickerScore: 20)
-        let collection4 = Collection(id: 4, nome: "Big Fone", imagemDesbloqueada: "url_4", imagemBloqueada: "imagemBloqueada", objetos: "RobBBB", descricao: "Elemento icônico do Big Brother Brasil que promete trazer uma surpresa para o jogo. Quem o atender pode ser imunizado, eliminado ou encaminhado ao paredão… tudo pode acontecer!", album: "BBB", stickerScore: 10)
-        let collection5 = Collection(id: 5, nome: "Pedro Bial", imagemDesbloqueada: "url_5", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "BBB", stickerScore: 20)
-        let collection6 = Collection(id: 6, nome: "Tiago Leifert", imagemDesbloqueada: "url_6", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "BBB", stickerScore: 20)
-        let collection7 = Collection(id: 7, nome: "Viih Tube", imagemDesbloqueada: "url_7", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "BBB", stickerScore: 20)
-        let collection8 = Collection(id: 8, nome: "RoBBB Verde", imagemDesbloqueada: "url_8", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "BBB", stickerScore: 20)
-        let collection9 = Collection(id: 9, nome: "RoBBB Rosa", imagemDesbloqueada: "url_9", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "BBB", stickerScore: 20)
-        let collection10 = Collection(id: 10, nome: "RoBBB Azul", imagemDesbloqueada: "url_10", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "BBB", stickerScore: 20)
-        let collection11 = Collection(id: 11, nome: "Juliette", imagemDesbloqueada: "url_12", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Juliette, a rainha do carisma, é uma advogada que virou fenômeno após vencer o BBB 21. Com sua simpatia, conquistou o país e virou meme oficial do Brasil!", album: "BBB", stickerScore: 20)
-        let collection12 = Collection(id: 12, nome: "RoBBB Anjo", imagemDesbloqueada: "url_13", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "BBB", stickerScore: 20)
-        let collection13 = Collection(id: 13, nome: "Samsung", imagemDesbloqueada: "url_14", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "BBB", stickerScore: 20)
-        let collection14 = Collection(id: 14, nome: "Americanas", imagemDesbloqueada: "url_15", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "BBB", stickerScore: 20)
+        let collection1 = Collection(id: 1, nome: "RoBBB Mau", imagemDesbloqueada: "url_1", imagemBloqueada: "imagemBloqueada", categoria: "RobBBB", raridade: true, descricao: "RoBBB Mau, a personificação do Castigo do Monstro. Nele, a produção determina ações desconfortáveis ao longo de todo um final de semana.", album: "BBB", stickerScore: 10)
+        let collection2 = Collection(id: 2, nome: "McDonald’s", imagemDesbloqueada: "url_2", imagemBloqueada: "imagemBloqueada", categoria: "Patrocinadores", raridade: true, descricao: "Patrocinador oficial do BBB, transformando lanches em estrelas do reality show mais saboroso! Quem criará a próxima Méquizice surpreendente? 🍔✨", album: "BBB", stickerScore: 10)
+        let collection3 = Collection(id: 3, nome: "Karol Conká", imagemDesbloqueada: "url_3", imagemBloqueada: "imagemBloqueada", categoria: "Brothers", raridade: false, descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "BBB", stickerScore: 20)
+        let collection4 = Collection(id: 4, nome: "Big Fone", imagemDesbloqueada: "url_4", imagemBloqueada: "imagemBloqueada", categoria: "Objetos", raridade: false, descricao: "Elemento icônico do Big Brother Brasil que promete trazer uma surpresa para o jogo. Quem o atender pode ser imunizado, eliminado ou encaminhado ao paredão… tudo pode acontecer!", album: "BBB", stickerScore: 10)
+        let collection5 = Collection(id: 5, nome: "Pedro Bial", imagemDesbloqueada: "url_5", imagemBloqueada: "imagemBloqueada", categoria: "Apresentadores", raridade: false, descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "BBB", stickerScore: 20)
+        let collection6 = Collection(id: 6, nome: "Tiago Leifert", imagemDesbloqueada: "url_6", imagemBloqueada: "imagemBloqueada", categoria: "Apresentadores", raridade: false, descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "BBB", stickerScore: 20)
+        let collection7 = Collection(id: 7, nome: "Viih Tube", imagemDesbloqueada: "url_7", imagemBloqueada: "imagemBloqueada",categoria: "Brothers", raridade: false, descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "BBB", stickerScore: 20)
+        let collection8 = Collection(id: 8, nome: "RoBBB Verde", imagemDesbloqueada: "url_8", imagemBloqueada: "imagemBloqueada", categoria: "RobBBB", raridade: false, descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "BBB", stickerScore: 20)
+        let collection9 = Collection(id: 9, nome: "RoBBB Rosa", imagemDesbloqueada: "url_9", imagemBloqueada: "imagemBloqueada", categoria: "RobBBB", raridade: false, descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "BBB", stickerScore: 20)
+        let collection10 = Collection(id: 10, nome: "RoBBB Azul", imagemDesbloqueada: "url_10", imagemBloqueada: "imagemBloqueada", categoria: "RobBBB", raridade: false, descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "BBB", stickerScore: 20)
+        let collection11 = Collection(id: 11, nome: "Juliette", imagemDesbloqueada: "url_12", imagemBloqueada: "imagemBloqueada", categoria: "Brothers", raridade: false, descricao: "Juliette, a rainha do carisma, é uma advogada que virou fenômeno após vencer o BBB 21. Com sua simpatia, conquistou o país e virou meme oficial do Brasil!", album: "BBB", stickerScore: 20)
+        let collection12 = Collection(id: 12, nome: "RoBBB Anjo", imagemDesbloqueada: "url_13", imagemBloqueada: "imagemBloqueada", categoria: "RobBBB", raridade: true, descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "BBB", stickerScore: 20)
+        let collection13 = Collection(id: 13, nome: "Samsung", imagemDesbloqueada: "url_14", imagemBloqueada: "imagemBloqueada", categoria: "Patrocinadores", raridade: true, descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "BBB", stickerScore: 20)
+        let collection14 = Collection(id: 14, nome: "Americanas", imagemDesbloqueada: "url_15", imagemBloqueada: "imagemBloqueada", categoria: "Patrocinadores", raridade: true, descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "BBB", stickerScore: 20)
         
 //                       model album
                        models.append(Model(id: 1, text: "BBB", imageName: "image_1", imageDetails: "bbb1", figurinhas: [collection1,collection2,collection3,collection4,collection5,collection6,collection7,collection8, collection9,collection10,collection11,collection12,collection13,collection14]))
@@ -176,20 +180,20 @@ class CollectionViewController: UIViewController {
                        models.append(Model(id: 5, text: "The masked singer", imageName: "image_5", imageDetails: "bbb1", figurinhas: [collection1]))
        
                        //recents
-        recents.append(ModelRecents(id: 1, nome: "RoBBB Mau", imagemDesbloqueada: "url_1", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "RoBBB Mau, a personificação do Castigo do Monstro. Nele, a produção determina ações desconfortáveis ao longo de todo um final de semana.", album: "bbb", stickerScore: 10))
-        recents.append(ModelRecents(id: 2, nome: "McDonald’s", imagemDesbloqueada: "url_2", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Patrocinador oficial do BBB, transformando lanches em estrelas do reality show mais saboroso! Quem criará a próxima Méquizice surpreendente? 🍔✨", album: "bbb", stickerScore: 10))
-        recents.append(ModelRecents(id: 3, nome: "Karol Conká", imagemDesbloqueada: "url_3", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "bbb", stickerScore: 10))
-        recents.append(ModelRecents(id: 4, nome: "Big Fone", imagemDesbloqueada: "url_4", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Elemento icônico do Big Brother Brasil que promete trazer uma surpresa para o jogo. Quem o atender pode ser imunizado, eliminado ou encaminhado ao paredão… tudo pode acontecer!", album: "bbb", stickerScore: 10))
-        recents.append(ModelRecents(id: 5, nome: "Pedro Bial", imagemDesbloqueada: "url_5", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "bbb", stickerScore: 10))
-        recents.append(ModelRecents(id: 6, nome: "Tiago Leifert", imagemDesbloqueada: "url_6", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "bbb", stickerScore: 10))
-        recents.append(ModelRecents(id: 7, nome: "Viih Tube", imagemDesbloqueada: "url_7", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "bbb", stickerScore: 10))
-        recents.append(ModelRecents(id: 8, nome: "RoBBB Verde", imagemDesbloqueada: "url_8", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "bbb", stickerScore: 10))
-        recents.append(ModelRecents(id: 9, nome: "RoBBB Rosa", imagemDesbloqueada: "url_9", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "bbb", stickerScore: 10))
-        recents.append(ModelRecents(id: 10, nome: "RoBBB Azul", imagemDesbloqueada: "url_10", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "bbb", stickerScore: 10))
-        recents.append(ModelRecents(id: 11, nome: "Juliette", imagemDesbloqueada: "url_11", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Juliette, a rainha do carisma, é uma advogada que virou fenômeno após vencer o BBB 21. Com sua simpatia, conquistou o país e virou meme oficial do Brasil!", album: "bbb", stickerScore: 10))
-        recents.append(ModelRecents(id: 12, nome: "RoBBB Anjo", imagemDesbloqueada: "url_12", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "bbb", stickerScore: 10))
-        recents.append(ModelRecents(id: 13, nome: "Samsung", imagemDesbloqueada: "url_13", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "bbb", stickerScore: 10))
-        recents.append(ModelRecents(id: 14, nome: "Americanas", imagemDesbloqueada: "url_14", imagemBloqueada: "imagemBloqueada", objetos: "Objetos", descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "bbb", stickerScore: 10))
+        recents.append(ModelRecents(id: 1, nome: "RoBBB Mau", imagemDesbloqueada: "url_1", imagemBloqueada: "imagemBloqueada", categoria: "RobBBB", raridade: true, descricao: "RoBBB Mau, a personificação do Castigo do Monstro. Nele, a produção determina ações desconfortáveis ao longo de todo um final de semana.", album: "bbb", stickerScore: 10))
+        recents.append(ModelRecents(id: 2, nome: "McDonald’s", imagemDesbloqueada: "url_2", imagemBloqueada: "imagemBloqueada", categoria: "Patrocinadores", raridade: true, descricao: "Patrocinador oficial do BBB, transformando lanches em estrelas do reality show mais saboroso! Quem criará a próxima Méquizice surpreendente? 🍔✨", album: "bbb", stickerScore: 10))
+        recents.append(ModelRecents(id: 3, nome: "Karol Conká", imagemDesbloqueada: "url_3", imagemBloqueada: "imagemBloqueada", categoria: "Brothers", raridade: false, descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "bbb", stickerScore: 10))
+        recents.append(ModelRecents(id: 4, nome: "Big Fone", imagemDesbloqueada: "url_4", imagemBloqueada: "imagemBloqueada", categoria: "Objetos", raridade: false, descricao: "Elemento icônico do Big Brother Brasil que promete trazer uma surpresa para o jogo. Quem o atender pode ser imunizado, eliminado ou encaminhado ao paredão… tudo pode acontecer!", album: "bbb", stickerScore: 10))
+        recents.append(ModelRecents(id: 5, nome: "Pedro Bial", imagemDesbloqueada: "url_5", imagemBloqueada: "imagemBloqueada", categoria: "Apresentadores", raridade: false, descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "bbb", stickerScore: 10))
+        recents.append(ModelRecents(id: 6, nome: "Tiago Leifert", imagemDesbloqueada: "url_6", imagemBloqueada: "imagemBloqueada", categoria: "Apresentadores", raridade: false, descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "bbb", stickerScore: 10))
+        recents.append(ModelRecents(id: 7, nome: "Viih Tube", imagemDesbloqueada: "url_7", imagemBloqueada: "imagemBloqueada", categoria: "Brothers", raridade: false, descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "bbb", stickerScore: 10))
+        recents.append(ModelRecents(id: 8, nome: "RoBBB Verde", imagemDesbloqueada: "url_8", imagemBloqueada: "imagemBloqueada", categoria: "RobBBB", raridade: false, descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "bbb", stickerScore: 10))
+        recents.append(ModelRecents(id: 9, nome: "RoBBB Rosa", imagemDesbloqueada: "url_9", imagemBloqueada: "imagemBloqueada", categoria: "RobBBB", raridade: false, descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "bbb", stickerScore: 10))
+        recents.append(ModelRecents(id: 10, nome: "RoBBB Azul", imagemDesbloqueada: "url_10", imagemBloqueada: "imagemBloqueada", categoria: "RobBBB", raridade: false, descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "bbb", stickerScore: 10))
+        recents.append(ModelRecents(id: 11, nome: "Juliette", imagemDesbloqueada: "url_11", imagemBloqueada: "imagemBloqueada", categoria: "Brothers", raridade: false, descricao: "Juliette, a rainha do carisma, é uma advogada que virou fenômeno após vencer o BBB 21. Com sua simpatia, conquistou o país e virou meme oficial do Brasil!", album: "bbb", stickerScore: 10))
+        recents.append(ModelRecents(id: 12, nome: "RoBBB Anjo", imagemDesbloqueada: "url_12", imagemBloqueada: "imagemBloqueada", categoria: "RobBBB", raridade: true, descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "bbb", stickerScore: 10))
+        recents.append(ModelRecents(id: 13, nome: "Samsung", imagemDesbloqueada: "url_13", imagemBloqueada: "imagemBloqueada", categoria: "Patrocinadores", raridade: true, descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "bbb", stickerScore: 10))
+        recents.append(ModelRecents(id: 14, nome: "Americanas", imagemDesbloqueada: "url_14", imagemBloqueada: "imagemBloqueada", categoria: "Patrocinadores", raridade: true, descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "bbb", stickerScore: 10))
 
 
 
