@@ -20,7 +20,7 @@ class GalerysTableViewCell: UITableViewCell {
         // Configurar o layout da collectionView para exibir duas células por linha
         if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.scrollDirection = .vertical
-            let numberOfItemsPerRow: CGFloat = 3
+            let numberOfItemsPerRow: CGFloat = 2
             let spacingBetweenCells: CGFloat = 0 // Espaçamento entre as células
 
             let totalSpacing = (numberOfItemsPerRow - 1) * spacingBetweenCells

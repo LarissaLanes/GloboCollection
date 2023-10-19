@@ -4,7 +4,6 @@ class InfoViewController: UIViewController {
 
     var collectionData: Collection?
 
-    // Adicione as visualizações para a imagem, o título, o objeto da imagem, o divisor e o texto
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -16,8 +15,8 @@ class InfoViewController: UIViewController {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .text // Mude a cor do texto para branco
-        label.textAlignment = .center // Centralize o texto
+        label.textColor = .text
+        label.textAlignment = .center
         return label
     }()
 
@@ -26,8 +25,8 @@ class InfoViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 16)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .text // Mude a cor do texto para branco
-        label.textAlignment = .center // Centralize o texto
+        label.textColor = .text
+        label.textAlignment = .center
 //        label.layer.borderWidth = 1
 //        label.layer.borderColor = UIColor.red.cgColor
 //        label.layer.cornerRadius = 5
@@ -56,7 +55,6 @@ class InfoViewController: UIViewController {
         return label
     }()
 
-    // Adicione um botão para iniciar o quiz
     private let startQuizButton: UIButton = {
         let button = UIButton()
         button.setTitle("Realizar quiz", for: .normal)
@@ -66,7 +64,7 @@ class InfoViewController: UIViewController {
         button.layer.borderColor = UIColor.red.cgColor
         button.layer.cornerRadius = 5
         let margin: CGFloat = 20
-        button.contentEdgeInsets = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
+//        button.contentEdgeInsets = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
         
         return button
     }()
@@ -79,8 +77,8 @@ class InfoViewController: UIViewController {
         button.layer.borderColor = UIColor.red.cgColor
         button.layer.cornerRadius = 5
         button.layer.borderWidth = 1
-        let margin: CGFloat = 20 // Ajuste o valor conforme necessário
-        button.contentEdgeInsets = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
+        let margin: CGFloat = 20
+//        button.contentEdgeInsets = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
     
          return button
      }()
@@ -89,17 +87,15 @@ class InfoViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPage
 
-        // Adicione um botão de voltar
         let backButton = UIBarButtonItem(title: "Voltar", style: .plain, target: self, action: #selector(backButtonTapped))
         self.navigationItem.leftBarButtonItem = backButton
 
-        // Adicione as visualizações à hierarquia de visualização
         view.addSubview(imageView)
         view.addSubview(titleLabel)
         view.addSubview(objectLabel)
         view.addSubview(dividerView)
         view.addSubview(descriptionLabel)
-        view.addSubview(startQuizButton) // Adicione o botão
+        view.addSubview(startQuizButton)
 //        view.addSubview(showProfileButton)
         
         NSLayoutConstraint.activate([
@@ -128,108 +124,65 @@ class InfoViewController: UIViewController {
 
             startQuizButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 16),
             startQuizButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
-//            showProfileButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 16),
-//            showProfileButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
-    
-         
-        
     
         startQuizButton.addTarget(self, action: #selector(startQuizButtonTapped), for: .touchUpInside)
         showProfileButton.addTarget(self, action: #selector(showProfileButtonTapped), for: .touchUpInside)
         
-        // Verifique se há dados da coleção e atualize as visualizações com os dados
         if let collection = collectionData {
             
             let stickerID = UserDefaults.standard.integer(forKey: "stickerResgatado\(collection.id)")
-            let completedQuizID = UserDefaults.standard.integer(forKey: "quizCompleto\(collection.id)")
-
 
             if stickerID == collection.id {
                 print("id: \(stickerID)")
-                imageView.image = UIImage(named: collection.imagemDesbloqueada) // Substitua pela imagem real
+                imageView.image = UIImage(named: collection.imagemDesbloqueada)
                 titleLabel.text = collection.nome
                 descriptionLabel.text = collection.descricao
+                startQuizButton.isHidden = true
+                showProfileButton.isHidden = false
                 
                 if collection.raridade == true {
                     objectLabel.text = "RARA"
+                    objectLabel.textColor = .red
                 }else{
                     objectLabel.text = "NORMAL"
+                    objectLabel.textColor = .white
+
                 }
 
             } else {
-                imageView.image = UIImage(named: collection.imagemBloqueada) // Substitua pela imagem real
-                titleLabel.text = "Figurinha Bloqueada\(collection.id)"
+                imageView.image = UIImage(named: collection.imagemBloqueada) 
+                titleLabel.text = collection.nome
                 descriptionLabel.text = "Opa! Parece que você ainda não tem essa figurinha. Faça o quiz abaixo para ter a chance de resgatá-la ;-)"
-
-                if collection.raridade == true {
-                    objectLabel.text = "RARA"
-                }else{
-                    objectLabel.text = "NORMAL"
-                }
-            }
-           
-            
-            //faz a troca dos botoes se o quiz ja estviver completo
-            if completedQuizID == collection.id {
-                startQuizButton.isHidden = true
-                showProfileButton.isHidden = false
-            }else{
                 startQuizButton.isHidden = false
                 showProfileButton.isHidden = true
-
-
+//                if collection.raridade == true {
+//                    objectLabel.text = "RARA"
+//                    objectLabel.textColor = .red
+//                }else{
+//                    objectLabel.text = "NORMAL"
+//                    objectLabel.textColor = .white
+//
+//                }
             }
-            
         }
     }
     
-    // Método de ação para o botão de iniciar o quiz
     @objc private func startQuizButtonTapped() {
-//        let novaViewController = WebViewController()
-//        navigationController?.pushViewController(novaViewController, animated: true)
-
-        
-        
-        //quizz externo
-                guard let collection = collectionData else {
+        guard let collection = collectionData else {
             return
         }
 
-        // Com base no ID da coleção, redirecione para o quiz apropriado
-        switch collection.id {
-        case 1:
-            let quiz1ViewController = Quiz1ViewController()
-            quiz1ViewController.collectionData = collection
-
-            navigationController?.pushViewController(quiz1ViewController, animated: true)
-        case 2:
-            let quiz2ViewController = Quiz2ViewController()
-            quiz2ViewController.collectionData = collection
-
-            navigationController?.pushViewController(quiz2ViewController, animated: true)
-        // Adicione mais casos para outros IDs de coleção e quizzes, conforme necessário
-        default:
-            break
-        }
+        let novaViewController = WebViewController()
+        novaViewController.collectionData = collection
+        navigationController?.pushViewController(novaViewController, animated: true)
     }
     
-    // Método de ação para o botão "Mostrar no Perfil"
-      @objc private func showProfileButtonTapped() {
-          // Implemente a lógica para mostrar no perfil
-          print("mostrei a imagem no perfil")
-      }
-    
+    @objc private func showProfileButtonTapped() {
+        print("mostrei a imagem no perfil")
+    }
     
     @objc private func backButtonTapped() {
-        // Aqui você pode definir a ação a ser executada quando o botão "Voltar" for pressionado
-        // Por exemplo, voltar para a tela anterior
         navigationController?.popViewController(animated: true)
     }
-    
-    
-    
-    
-    
 }

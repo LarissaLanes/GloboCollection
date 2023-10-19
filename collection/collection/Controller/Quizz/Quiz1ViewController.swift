@@ -95,6 +95,7 @@ class Quiz1ViewController: UIViewController {
     }
 
     private func setupUI() {
+        
         view.addSubview(titleLabel)
         view.addSubview(questionLabel)
         view.addSubview(option1Button)
@@ -122,6 +123,12 @@ class Quiz1ViewController: UIViewController {
             option3Button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             option3Button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
         ])
+        
+        
+
+
+       
+
     }
 
     private func updateUI() {

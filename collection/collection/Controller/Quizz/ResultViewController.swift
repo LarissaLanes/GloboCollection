@@ -16,7 +16,7 @@ class ResultViewController: UIViewController {
     
     private let resultImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "imagemBloqueada")
+        imageView.image = UIImage(named: "urlBloq_1")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -29,6 +29,7 @@ class ResultViewController: UIViewController {
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.numberOfLines = 0
         label.textAlignment = .center
+        label.textColor = .text
         return label
     }()
     
@@ -39,6 +40,7 @@ class ResultViewController: UIViewController {
         label.font = UIFont.boldSystemFont(ofSize: 20)
         label.numberOfLines = 0
         label.textAlignment = .center
+        label.textColor = .text
         return label
     }()
     
@@ -46,10 +48,13 @@ class ResultViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Resgatar", for: .normal)
+        button.layer.borderWidth = 1
+        button.setTitleColor(.text, for: .normal) // Mude a cor do texto para branco
+        button.layer.borderColor = UIColor.red.cgColor
+        let margin: CGFloat = 20
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-        button.backgroundColor = .blue
-        button.setTitleColor(.white, for: .normal)
-        button.layer.cornerRadius = 8
+        button.backgroundColor = .none
+        button.layer.cornerRadius = 5
         button.addTarget(self, action: #selector(redeemButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -57,12 +62,16 @@ class ResultViewController: UIViewController {
     private let galeryButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Ver imagem na galeria", for: .normal)
+        button.setTitle("Ver na galeria", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-        button.backgroundColor = .blue
+        button.backgroundColor = .none
         button.setTitleColor(.white, for: .normal)
-        button.layer.cornerRadius = 8
+        button.layer.cornerRadius = 5
         button.addTarget(self, action: #selector(galeryButtonTapped), for: .touchUpInside)
+        button.layer.borderWidth = 1
+        button.setTitleColor(.text, for: .normal) // Mude a cor do texto para branco
+        button.layer.borderColor = UIColor.red.cgColor
+        let margin: CGFloat = 20
         return button
     }()
     
@@ -85,7 +94,7 @@ class ResultViewController: UIViewController {
         view.addSubview(galeryButton)
         
         NSLayoutConstraint.activate([
-            resultLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            resultLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
             resultLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             resultLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             
@@ -94,7 +103,7 @@ class ResultViewController: UIViewController {
             resultImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             resultImageView.heightAnchor.constraint(equalToConstant: 200),
             
-            stickerLabel.topAnchor.constraint(equalTo: resultImageView.bottomAnchor, constant: 20),
+            stickerLabel.topAnchor.constraint(equalTo: resultImageView.bottomAnchor, constant: 10),
             stickerLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             stickerLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             stickerLabel.heightAnchor.constraint(equalToConstant: 200),
@@ -114,10 +123,16 @@ class ResultViewController: UIViewController {
     @objc private func redeemButtonTapped() {
            if let stickerID = collectionData?.id {
                print("ID da coleção encontrado: \(stickerID)")
+//               print( UserDefaults.standard.integer(forKey: "quizCompleto\(stickerID)"))
+//               userDefaults.set(quizId, forKey: "quizCompleto\(stickerID)")
+               let userDefaults = UserDefaults.standard
+               userDefaults.set(collectionData?.id, forKey: "stickerResgatado\(String(describing: stickerID))")
+               
+               
                
                // Use a animação cross dissolve para suavizar a transição
                UIView.transition(with: resultImageView, duration: 0.5, options: .transitionCrossDissolve, animations: {
-                   self.resultImageView.image = UIImage(named: self.collectionData?.imagemDesbloqueada ?? "imagemBloqueada")
+                   self.resultImageView.image = UIImage(named: self.collectionData?.imagemDesbloqueada ?? "urlBloq_\(stickerID)")
                }, completion: nil)
                
                UIView.transition(with: stickerLabel, duration: 0.5, options: .transitionCrossDissolve, animations: {
@@ -165,6 +180,8 @@ class ResultViewController: UIViewController {
                } else {
                    print("UID do usuário não encontrado.")
                }
+               
+              
            } else {
                print("ID da coleção não encontrado.")
            }

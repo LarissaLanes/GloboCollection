@@ -40,7 +40,7 @@ class DetailsTableViewController: UIViewController {
         //botoes de modal na barra de navegacao
         let buttonRanking = CustomBarButton(image: UIImage(named: "ranking")!, target: self, action: #selector(buttonRankingTapped))
         let buttonReward = CustomBarButton(image: UIImage(named: "recompensas")!, target: self, action: #selector(buttonRewardTapped))
-        let buttonSearch = CustomBarButton(image: UIImage(named: "pesquisar")!, target: self, action: #selector(buttonSearchTapped))
+        let buttonSearch = CustomBarButton(image: UIImage(named: "collectionwhite")!, target: self, action: #selector(buttonSearchTapped))
         let buttonProfile = CustomBarButton(image: UIImage(named: "pesquisar")!, target: self, action: #selector(buttonProfileTapped))
         
         navigationItem.rightBarButtonItems = [buttonProfile,buttonSearch,buttonReward,buttonRanking]
@@ -88,8 +88,29 @@ class DetailsTableViewController: UIViewController {
     }
     
     @objc func buttonSearchTapped() {
-        print("Botão de imagem tocado!")
+        print("Dados do UserDefaults excluídos!")
+
+        let userDefaults = UserDefaults.standard
+
+        // Lista de chaves que você deseja excluir
+        let keysToDelete = ["stickerResgatado1", "stickerResgatado2", "stickerResgatado3", "stickerResgatado4", "stickerResgatado5", "stickerResgatado6", "stickerResgatado7", "stickerResgatado8", "stickerResgatado9", "stickerResgatado10"]
+
+        for key in keysToDelete {
+            userDefaults.removeObject(forKey: key)
+        }
+
+        
+//        let keysToDeleteQuizz = ["quizCompleto1", "quizCompleto2", "quizCompleto3", "quizCompleto4", "quizCompleto5", "quizCompleto6", "quizCompleto7", "quizCompleto8", "quizCompleto9", "quizCompleto10"]
+//
+//        for key in keysToDeleteQuizz {
+//            userDefaults.removeObject(forKey: key)
+//        }
+
+        // Certifique-se de chamar synchronize() para efetivar a exclusão (embora isso não seja estritamente necessário nas versões mais recentes do iOS)
+        userDefaults.synchronize()
     }
+
+
     
     @objc func buttonProfileTapped() {
         // Ação a ser executada quando o botão é tocado
@@ -114,6 +135,6 @@ extension DetailsTableViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 3000
+        return 8000
     }
 }

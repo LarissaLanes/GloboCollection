@@ -30,18 +30,22 @@ class CollectionItemCell: UICollectionViewCell {
             
             if collection.raridade == true{
                 raridade.text = "RARA"
+                raridade.textColor = .red
             }else{
                 raridade.text = "NORMAL"
+                raridade.textColor = .white
             }
 
         } else {
             image.image = UIImage(named: collection.imagemBloqueada)
-            titleImage.text = "Figurinha Bloqueada\(collection.id)"
+            titleImage.text = collection.nome
             
             if collection.raridade == true{
                 raridade.text = "RARA"
+                raridade.textColor = .red
             }else{
                 raridade.text = "NORMAL"
+                raridade.textColor = .white
             }
 
         }
