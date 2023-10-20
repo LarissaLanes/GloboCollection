@@ -16,8 +16,6 @@ class MyCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-//        self.viewPorcent.backgroundColor = .red
     }
     
     public func configure(with model: Model) {

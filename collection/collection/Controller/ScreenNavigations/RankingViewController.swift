@@ -27,7 +27,6 @@ class RankingViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        // Chame a função fetchAllUsersFromFirestore para buscar os usuários
         fetchAllUsersFromFirestore()
     }
     
@@ -57,8 +56,6 @@ class RankingViewController: UIViewController {
                     self.usuarios.append(user)
                 }
             }
-            
-            // Agora que você buscou todos os usuários, chame a função para calcular as porcentagens
             self.calculatePorcentagesFromUserScores()
         }
     }
@@ -89,12 +86,9 @@ class RankingViewController: UIViewController {
                         if percentage.isFinite {
                             self.usuarios[index].porcent = Int(percentage)
                         } else {
-                            // Lide com o caso em que o cálculo resulta em um valor infinito ou NaN, por exemplo, definindo um valor padrão.
-                            self.usuarios[index].porcent = 0 // Ou qualquer outro valor padrão desejado.
+                            self.usuarios[index].porcent = 0
                         }
-                        
-                        // Atualize a tabela com os dados atualizados dos usuários
-                        self.tableView.reloadData()
+                            self.tableView.reloadData()
                     }
                 }
             }

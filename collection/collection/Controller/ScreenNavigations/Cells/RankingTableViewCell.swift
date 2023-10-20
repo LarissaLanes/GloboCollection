@@ -29,6 +29,4 @@ class RankingTableViewCell: UITableViewCell {
         self.name.text = configure.name
         self.valueOfPorcent.text = "\(configure.porcent)%"
     }
-
-    
 }

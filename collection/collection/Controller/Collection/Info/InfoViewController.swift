@@ -27,13 +27,6 @@ class InfoViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .text
         label.textAlignment = .center
-//        label.layer.borderWidth = 1
-//        label.layer.borderColor = UIColor.red.cgColor
-//        label.layer.cornerRadius = 5
-//        let margin: CGFloat = 20
-//        label.contentEdgeInsets = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
-        
-
         return label
     }()
 
@@ -49,9 +42,8 @@ class InfoViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 16)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .text // Mude a cor do texto para branco
-        label.textAlignment = .center // Centralize o texto
-        
+        label.textColor = .text
+        label.textAlignment = .center
         return label
     }()
 
@@ -64,8 +56,6 @@ class InfoViewController: UIViewController {
         button.layer.borderColor = UIColor.red.cgColor
         button.layer.cornerRadius = 5
         let margin: CGFloat = 20
-//        button.contentEdgeInsets = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
-        
         return button
     }()
 
@@ -78,8 +68,6 @@ class InfoViewController: UIViewController {
         button.layer.cornerRadius = 5
         button.layer.borderWidth = 1
         let margin: CGFloat = 20
-//        button.contentEdgeInsets = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
-    
          return button
      }()
     
@@ -96,7 +84,6 @@ class InfoViewController: UIViewController {
         view.addSubview(dividerView)
         view.addSubview(descriptionLabel)
         view.addSubview(startQuizButton)
-//        view.addSubview(showProfileButton)
         
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
@@ -147,23 +134,13 @@ class InfoViewController: UIViewController {
                 }else{
                     objectLabel.text = "NORMAL"
                     objectLabel.textColor = .white
-
                 }
-
             } else {
                 imageView.image = UIImage(named: collection.imagemBloqueada) 
                 titleLabel.text = collection.nome
                 descriptionLabel.text = "Opa! Parece que você ainda não tem essa figurinha. Faça o quiz abaixo para ter a chance de resgatá-la ;-)"
                 startQuizButton.isHidden = false
                 showProfileButton.isHidden = true
-//                if collection.raridade == true {
-//                    objectLabel.text = "RARA"
-//                    objectLabel.textColor = .red
-//                }else{
-//                    objectLabel.text = "NORMAL"
-//                    objectLabel.textColor = .white
-//
-//                }
             }
         }
     }

@@ -47,7 +47,6 @@ class CollectionItemCell: UICollectionViewCell {
                 raridade.text = "NORMAL"
                 raridade.textColor = .white
             }
-
         }
     }
 }

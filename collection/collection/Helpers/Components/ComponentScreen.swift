@@ -1,7 +1,6 @@
 import UIKit
 
 class ComponentScreen: UIView {
-    // Elementos de interface de usuário
     let imageView = UIImageView()
     let label = UILabel()
 
@@ -19,12 +18,10 @@ class ComponentScreen: UIView {
         // Configurações da UIImageView
         imageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(imageView)
-        // Configure as restrições de layout para a UIImageView conforme necessário
 
         // Configurações do UILabel
         label.translatesAutoresizingMaskIntoConstraints = false
         addSubview(label)
-        // Configure as restrições de layout para o UILabel conforme necessário
     }
 }
 

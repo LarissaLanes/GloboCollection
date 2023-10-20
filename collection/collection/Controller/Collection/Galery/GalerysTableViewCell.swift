@@ -1,3 +1,9 @@
+//  CollectionItemCell.swift
+//  collectionProject
+//
+//  Created by Larissa Lanes on 28/09/23.
+//
+
 import UIKit
 
 class GalerysTableViewCell: UITableViewCell {
@@ -17,20 +23,15 @@ class GalerysTableViewCell: UITableViewCell {
         super.awakeFromNib()
         self.collectionView.backgroundColor = .backgroundPage
 
-        // Configurar o layout da collectionView para exibir duas células por linha
         if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.scrollDirection = .vertical
-            let numberOfItemsPerRow: CGFloat = 2
-            let spacingBetweenCells: CGFloat = 0 // Espaçamento entre as células
+            let numberOfItemsPerRow: CGFloat = 3
+            let spacingBetweenCells: CGFloat = 0
 
             let totalSpacing = (numberOfItemsPerRow - 1) * spacingBetweenCells
             let itemWidth = (collectionView.bounds.width - totalSpacing) / numberOfItemsPerRow
 
             flowLayout.itemSize = CGSize(width: itemWidth, height: itemWidth)
-//            flowLayout.minimumInteritemSpacing = spacingBetweenCells
-//            flowLayout.minimumLineSpacing = spacingBetweenCells
-            
-            
         }
 
         collectionView.register(UINib(nibName: "CollectionItemCell", bundle: nil), forCellWithReuseIdentifier: "CollectionItemCell")
@@ -65,7 +66,6 @@ extension GalerysTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
         }
     }
 
-    // Adicione essa função para encontrar o controlador de navegação pai
     func findNavigationController() -> UINavigationController? {
         var responder: UIResponder? = self
         while responder != nil {

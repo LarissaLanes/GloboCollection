@@ -8,7 +8,7 @@ class DetailsTableViewController: UIViewController {
     let backgroundImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.image = UIImage(named: "fundoBBB") // Substitua pelo nome da imagem da parede com grade
+        imageView.image = UIImage(named: "fundoBBB")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -16,7 +16,7 @@ class DetailsTableViewController: UIViewController {
     let secondImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "BBBLOGO") // Substitua pelo nome da segunda imagem
+        imageView.image = UIImage(named: "BBBLOGO") 
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -54,12 +54,12 @@ class DetailsTableViewController: UIViewController {
             backgroundImage.topAnchor.constraint(equalTo: view.topAnchor),
             backgroundImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             backgroundImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            backgroundImage.heightAnchor.constraint(equalToConstant: 200), // Ajuste a altura conforme necessário
+            backgroundImage.heightAnchor.constraint(equalToConstant: 200),
 
             secondImage.topAnchor.constraint(equalTo: backgroundImage.bottomAnchor, constant: 20),
             secondImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             secondImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            secondImage.heightAnchor.constraint(equalToConstant: 80), // Ajuste a altura conforme necessário
+            secondImage.heightAnchor.constraint(equalToConstant: 80),
 
             tableView.topAnchor.constraint(equalTo: secondImage.bottomAnchor, constant: 20),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
@@ -76,7 +76,6 @@ class DetailsTableViewController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    //funcoes do botao de navegacao
     @objc func buttonRankingTapped() {
         let modalViewController = RankingViewController()
         self.present(modalViewController, animated: true, completion: nil)
@@ -92,28 +91,16 @@ class DetailsTableViewController: UIViewController {
 
         let userDefaults = UserDefaults.standard
 
-        // Lista de chaves que você deseja excluir
-        let keysToDelete = ["stickerResgatado1", "stickerResgatado2", "stickerResgatado3", "stickerResgatado4", "stickerResgatado5", "stickerResgatado6", "stickerResgatado7", "stickerResgatado8", "stickerResgatado9", "stickerResgatado10"]
+        let keysToDelete = ["stickerResgatado1", "stickerResgatado2", "stickerResgatado3", "stickerResgatado4", "stickerResgatado5", "stickerResgatado6", "stickerResgatado7", "stickerResgatado8", "stickerResgatado9", "stickerResgatado10", "stickerResgatado11", "stickerResgatado12", "stickerResgatado13", "stickerResgatado14", "stickerResgatado15", "stickerResgatado16", "stickerResgatado17", "stickerResgatado18", "stickerResgatado19", "stickerResgatado20"]
 
         for key in keysToDelete {
             userDefaults.removeObject(forKey: key)
         }
-
         
-//        let keysToDeleteQuizz = ["quizCompleto1", "quizCompleto2", "quizCompleto3", "quizCompleto4", "quizCompleto5", "quizCompleto6", "quizCompleto7", "quizCompleto8", "quizCompleto9", "quizCompleto10"]
-//
-//        for key in keysToDeleteQuizz {
-//            userDefaults.removeObject(forKey: key)
-//        }
-
-        // Certifique-se de chamar synchronize() para efetivar a exclusão (embora isso não seja estritamente necessário nas versões mais recentes do iOS)
         userDefaults.synchronize()
     }
-
-
     
     @objc func buttonProfileTapped() {
-        // Ação a ser executada quando o botão é tocado
         print("Botão de imagem tocado!")
     }
 }
@@ -135,6 +122,6 @@ extension DetailsTableViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 8000
+        return 9000
     }
 }

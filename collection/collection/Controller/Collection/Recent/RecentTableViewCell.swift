@@ -32,13 +32,6 @@ class RecentTableViewCell: UITableViewCell {
         collectionViewRecent.delegate = self
         collectionViewRecent.dataSource = self
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
 }
 
 extension RecentTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource{
@@ -60,5 +53,4 @@ extension RecentTableViewCell: UICollectionViewDelegate, UICollectionViewDataSou
         
         return CGSize(width: 400, height: 400)
     }
-    
 }

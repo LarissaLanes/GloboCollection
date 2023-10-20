@@ -123,14 +123,10 @@ class ResultViewController: UIViewController {
     @objc private func redeemButtonTapped() {
            if let stickerID = collectionData?.id {
                print("ID da coleção encontrado: \(stickerID)")
-//               print( UserDefaults.standard.integer(forKey: "quizCompleto\(stickerID)"))
-//               userDefaults.set(quizId, forKey: "quizCompleto\(stickerID)")
+
                let userDefaults = UserDefaults.standard
                userDefaults.set(collectionData?.id, forKey: "stickerResgatado\(String(describing: stickerID))")
                
-               
-               
-               // Use a animação cross dissolve para suavizar a transição
                UIView.transition(with: resultImageView, duration: 0.5, options: .transitionCrossDissolve, animations: {
                    self.resultImageView.image = UIImage(named: self.collectionData?.imagemDesbloqueada ?? "urlBloq_\(stickerID)")
                }, completion: nil)
@@ -139,7 +135,7 @@ class ResultViewController: UIViewController {
                    self.stickerLabel.text = self.collectionData?.nome
                }, completion: nil)
                
-               // Salve a pontuação do sticker no Firestore associada ao UID do usuário
+               // salvando no firebase
                if let userUID = UserDefaults.standard.string(forKey: "userUID") {
                    let db = Firestore.firestore()
                    let userScoresRef = db.collection("user_scores").document(userUID)
@@ -151,10 +147,8 @@ class ResultViewController: UIViewController {
                        "uid": userUID
                    ]
                    
-                   // Verifique se o documento do usuário existe
                    userScoresRef.getDocument { (document, error) in
                        if let document = document, document.exists {
-                           // O documento do usuário existe, atualize a matriz de pontuações
                            userScoresRef.updateData([
                                "scores": FieldValue.arrayUnion([stickerScore])
                            ]) { (error) in
@@ -165,7 +159,6 @@ class ResultViewController: UIViewController {
                                }
                            }
                        } else {
-                           // O documento do usuário não existe, crie-o com a primeira pontuação
                            userScoresRef.setData([
                                "scores": [stickerScore]
                            ]) { (error) in

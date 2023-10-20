@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		513F27B118D36B420452D749 /* Pods_collection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6BD9C092B4692C4E87A62E1 /* Pods_collection.framework */; };
 		AE06CD3B2AB4DE5300073B00 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE06CD3A2AB4DE5300073B00 /* Utilities.swift */; };
-		AE35FECD2AC8CB4300B047B5 /* Quiz1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE35FECC2AC8CB4300B047B5 /* Quiz1ViewController.swift */; };
-		AE35FECF2AC8CB5400B047B5 /* Quiz2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE35FECE2AC8CB5400B047B5 /* Quiz2ViewController.swift */; };
 		AE35FED12AC8D01300B047B5 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE35FED02AC8D01300B047B5 /* ResultViewController.swift */; };
 		AE35FED52AC9DC3E00B047B5 /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE35FED42AC9DC3E00B047B5 /* ErrorViewController.swift */; };
 		AE3F8C7F2ABE7693007267BB /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3F8C7D2ABE7693007267BB /* CollectionViewController.swift */; };
@@ -19,7 +17,6 @@
 		AE4B8EF62AC7208200A0BAEF /* CollectionItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4B8EF42AC7208200A0BAEF /* CollectionItemCell.swift */; };
 		AE4B8EF72AC7208200A0BAEF /* CollectionItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE4B8EF52AC7208200A0BAEF /* CollectionItemCell.xib */; };
 		AE4B8EF92AC7298400A0BAEF /* ComponentScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4B8EF82AC7298400A0BAEF /* ComponentScreen.swift */; };
-		AE58156B2AD720D100ED9298 /* Quiz3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE58156A2AD720D100ED9298 /* Quiz3ViewController.swift */; };
 		AE6A17072AB23D95001BE6BC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A17062AB23D95001BE6BC /* LoginViewController.swift */; };
 		AE6A17092AB23DC9001BE6BC /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A17082AB23DC9001BE6BC /* RegisterViewController.swift */; };
 		AE84E22C2AD49B42005CA108 /* RewardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE84E22B2AD49B42005CA108 /* RewardViewController.swift */; };
@@ -37,7 +34,6 @@
 		AE8CD70F2AC71E5D002F0537 /* DetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE8CD70D2AC71E5D002F0537 /* DetailsTableViewController.swift */; };
 		AEB393F62AC7437C00FB7C8B /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB393F52AC7437C00FB7C8B /* InfoViewController.swift */; };
 		AECDDA232ABE502A00991AC0 /* Stickes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECDDA222ABE502A00991AC0 /* Stickes.swift */; };
-		AECDDA302ABE6FD400991AC0 /* ApiServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECDDA2F2ABE6FD400991AC0 /* ApiServices.swift */; };
 		AECDDA352ABE709400991AC0 /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECDDA342ABE709400991AC0 /* ErrorModel.swift */; };
 		AEE2DD8F2A9FBEA20040D789 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE2DD8E2A9FBEA20040D789 /* AppDelegate.swift */; };
 		AEE2DD912A9FBEA20040D789 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE2DD902A9FBEA20040D789 /* SceneDelegate.swift */; };
@@ -57,8 +53,6 @@
 		55D24F796CB99F0375939CE5 /* Pods-collection.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-collection.debug.xcconfig"; path = "Target Support Files/Pods-collection/Pods-collection.debug.xcconfig"; sourceTree = "<group>"; };
 		877028FC790BC1B1DD034DC5 /* Pods-collection.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-collection.release.xcconfig"; path = "Target Support Files/Pods-collection/Pods-collection.release.xcconfig"; sourceTree = "<group>"; };
 		AE06CD3A2AB4DE5300073B00 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		AE35FECC2AC8CB4300B047B5 /* Quiz1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz1ViewController.swift; sourceTree = "<group>"; };
-		AE35FECE2AC8CB5400B047B5 /* Quiz2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz2ViewController.swift; sourceTree = "<group>"; };
 		AE35FED02AC8D01300B047B5 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		AE35FED42AC9DC3E00B047B5 /* ErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
 		AE3F8C7D2ABE7693007267BB /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CollectionViewController.swift; path = AlbunsColletion/CollectionViewController.swift; sourceTree = "<group>"; };
@@ -67,7 +61,6 @@
 		AE4B8EF42AC7208200A0BAEF /* CollectionItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionItemCell.swift; sourceTree = "<group>"; };
 		AE4B8EF52AC7208200A0BAEF /* CollectionItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionItemCell.xib; sourceTree = "<group>"; };
 		AE4B8EF82AC7298400A0BAEF /* ComponentScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentScreen.swift; sourceTree = "<group>"; };
-		AE58156A2AD720D100ED9298 /* Quiz3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz3ViewController.swift; sourceTree = "<group>"; };
 		AE6A17062AB23D95001BE6BC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AE6A17082AB23DC9001BE6BC /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		AE84E22B2AD49B42005CA108 /* RewardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardViewController.swift; sourceTree = "<group>"; };
@@ -85,7 +78,6 @@
 		AE8CD70D2AC71E5D002F0537 /* DetailsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableViewController.swift; sourceTree = "<group>"; };
 		AEB393F52AC7437C00FB7C8B /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		AECDDA222ABE502A00991AC0 /* Stickes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stickes.swift; sourceTree = "<group>"; };
-		AECDDA2F2ABE6FD400991AC0 /* ApiServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServices.swift; sourceTree = "<group>"; };
 		AECDDA342ABE709400991AC0 /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
 		AEE2DD8B2A9FBEA20040D789 /* collection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = collection.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEE2DD8E2A9FBEA20040D789 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -137,9 +129,6 @@
 		AE35FECB2AC8CB1C00B047B5 /* Quizz */ = {
 			isa = PBXGroup;
 			children = (
-				AE35FECC2AC8CB4300B047B5 /* Quiz1ViewController.swift */,
-				AE35FECE2AC8CB5400B047B5 /* Quiz2ViewController.swift */,
-				AE58156A2AD720D100ED9298 /* Quiz3ViewController.swift */,
 				AE35FED02AC8D01300B047B5 /* ResultViewController.swift */,
 				AE35FED42AC9DC3E00B047B5 /* ErrorViewController.swift */,
 				AEED251F2ACC8CEA00FF89D6 /* WebViewController.swift */,
@@ -318,7 +307,6 @@
 		AECDDA2D2ABE6FAC00991AC0 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				AECDDA2F2ABE6FD400991AC0 /* ApiServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -560,14 +548,11 @@
 				AE3F8C7F2ABE7693007267BB /* CollectionViewController.swift in Sources */,
 				AE84E22E2AD49D27005CA108 /* RankingViewController.swift in Sources */,
 				AE8CD7012AC71A7B002F0537 /* CollectionTableViewCell.swift in Sources */,
-				AE58156B2AD720D100ED9298 /* Quiz3ViewController.swift in Sources */,
 				AE8CD6FD2AC71A47002F0537 /* RecentTableViewCell.swift in Sources */,
-				AE35FECF2AC8CB5400B047B5 /* Quiz2ViewController.swift in Sources */,
 				AEE2DD912A9FBEA20040D789 /* SceneDelegate.swift in Sources */,
 				AEE2DDB22AA12B320040D789 /* MyViewController.swift in Sources */,
 				AEE2DDB62AA12B690040D789 /* DownloadsViewController.swift in Sources */,
 				AEE2DDB42AA12B510040D789 /* OptionViewController.swift in Sources */,
-				AE35FECD2AC8CB4300B047B5 /* Quiz1ViewController.swift in Sources */,
 				AE4B8EF22AC71FB900A0BAEF /* GalerysTableViewCell.swift in Sources */,
 				AE8CD7052AC71B24002F0537 /* MyRecentCollectionViewCell.swift in Sources */,
 				AE8CD7092AC71B3F002F0537 /* MyCollectionViewCell.swift in Sources */,
@@ -579,7 +564,6 @@
 				AEE2DDA62A9FD7A50040D789 /* HomeViewController.swift in Sources */,
 				AE6A17072AB23D95001BE6BC /* LoginViewController.swift in Sources */,
 				AEB393F62AC7437C00FB7C8B /* InfoViewController.swift in Sources */,
-				AECDDA302ABE6FD400991AC0 /* ApiServices.swift in Sources */,
 				AE35FED12AC8D01300B047B5 /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

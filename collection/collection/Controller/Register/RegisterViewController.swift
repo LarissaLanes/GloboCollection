@@ -13,7 +13,6 @@ import FirebaseFirestore
 class RegisterViewController: UIViewController {
     
     // MARK: - Properties
-    
     private let usernameTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Nome de usuário"
@@ -51,7 +50,6 @@ class RegisterViewController: UIViewController {
     
     
     // MARK: - View Lifecycle
-    
     var auth:Auth?
     
     override func viewDidLoad() {
@@ -69,22 +67,13 @@ class RegisterViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    //verifica se os dados do text field estao corretos
     func validateFields() -> String? {
-        //checa se se tem espacos entre as letras
         if usernameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
            emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
             passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""
         {
             return "preste atencao aos espacos"
         }
-        //verifica se a senha esta segura
-//        let cleanedPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-//        if Utilities.isPasswordValid(cleanedPassword) == false {
-//
-//            return "por favor verifique sua senha e corriga se atentando a 8 caracteres"
-//        }
-        
         return nil
     }
     // MARK: - UI Setup
@@ -142,7 +131,7 @@ class RegisterViewController: UIViewController {
                 }else{
                     
                     print("usuario criado com sucesso!")
-                    //salvando o id do usuario no userdefaults
+
                     if let user = result?.user{
                         let uid = user.uid
                         UserDefaults.standard.set(uid, forKey: "userUID")

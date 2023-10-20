@@ -1,6 +1,5 @@
 import UIKit
 
-
 struct Model {
     let id: Int
     let text: String
@@ -40,7 +39,6 @@ struct Collection {
         self.stickerScore = stickerScore
     }
 }
-
 ////excluir no futuro(usar o array de sticker do usuario no firebase)
 struct ModelRecents {
     let id: Int
@@ -66,66 +64,26 @@ struct ModelRecents {
     }
 }
 
-
 class CollectionViewController: UIViewController {
     
-    //models
-        var models = [Model]()
+    var models = [Model]()
     var recents = [ModelRecents]()
-        var selectedRow = 0
-    
-        var data = [[RecentTableViewCell()],[CollectionTableViewCell()]]
+    var selectedRow = 0
+    var data = [[RecentTableViewCell()],[CollectionTableViewCell()]]
    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .backgroundPage
-        
-
-        
-//        //botoes de modal na barra de navegacao
-//        let navigationBar = UINavigationBar()
-//        navigationBar.barTintColor = .backgroundPage // Define o background como preto
-//
-//        // Defina a altura desejada para a barra de navegação
-//        let barHeight: CGFloat = 500.0
-//              let barFrame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: barHeight)
-//              navigationBar.frame = barFrame
-//
-//                // Crie um item de navegação com um título à esquerda
-//        let navigationItem = UINavigationItem()
-//        let leftTitleItem = UIBarButtonItem(title: "Collection", style: .plain, target: nil, action: nil)
-//
-//        navigationItem.leftBarButtonItem = leftTitleItem
-//        navigationBar.items = [navigationItem]
-//        self.view.addSubview(navigationBar)
-//        navigationBar.translatesAutoresizingMaskIntoConstraints = false
-//
-//
-//        
-//        let buttonSearch = CustomBarButton(image: UIImage(named: "pesquisar")!, target: self, action: #selector(buttonSearchTapped))
-//        let buttonProfile = CustomBarButton(image: UIImage(named: "ranking")!, target: self, action: #selector(buttonProfileTapped))
-//        
-//        navigationItem.rightBarButtonItems = [buttonProfile,buttonSearch]
-        //
-
-        // Crie uma instância da tela de componentes
+ 
         let componentScreen = ComponentScreen()
         componentScreen.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(componentScreen)
         
-
-        // Configurar a imagem e o texto na tela de componentes
         componentScreen.imageView.image = UIImage(named: "globoCollectionLogo")
         componentScreen.label.text = "Seu álbum de melhores momentos."
-        componentScreen.label.textColor = .white // Defina a cor do texto como branco
+        componentScreen.label.textColor = .white
 
-        // Configure as restrições de layout para a tela de componentes com espaço no topo
         NSLayoutConstraint.activate([
-//            navigationBar.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
-//            navigationBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            navigationBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            
             componentScreen.imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 180),
             componentScreen.imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             componentScreen.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -135,28 +93,23 @@ class CollectionViewController: UIViewController {
             componentScreen.label.trailingAnchor.constraint(equalTo: componentScreen.imageView.trailingAnchor),
         ])
         
-        // Crie uma UITableView programaticamente
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .backgroundPage
         view.addSubview(tableView)
         
-        // Configure as restrições de layout para a UITableView abaixo do texto
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: componentScreen.label.bottomAnchor, constant: 40), // Ajuste o valor de "constant" conforme necessário para definir o espaço entre o texto e a UITableView
+            tableView.topAnchor.constraint(equalTo: componentScreen.label.bottomAnchor, constant: 40),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
         
-        // Registre as células da UITableView e defina o dataSource e delegate conforme necessário
         tableView.register(UINib(nibName: "RecentTableViewCell", bundle: nil), forCellReuseIdentifier: "RecentTableViewCell")
         tableView.register(UINib(nibName: "CollectionTableViewCell", bundle: nil), forCellReuseIdentifier: "CollectionTableViewCell")
-               tableView.dataSource = self
-               tableView.delegate = self
-               
-               //dados do array de figurinhas
-               //figurinhas
+        tableView.dataSource = self
+        tableView.delegate = self
+      
         let collection1 = Collection(id: 1, nome: "RoBBB Mau", imagemDesbloqueada: "url_1", imagemBloqueada: "urlBloq_1", categoria: "RobBBB", raridade: true, descricao: "RoBBB Mau, a personificação do Castigo do Monstro. Nele, a produção determina ações desconfortáveis ao longo de todo um final de semana.", album: "BBB", stickerScore: 10)
         let collection2 = Collection(id: 2, nome: "McDonald’s", imagemDesbloqueada: "url_2", imagemBloqueada: "urlBloq_2", categoria: "Patrocinadores", raridade: true, descricao: "Patrocinador oficial do BBB, transformando lanches em estrelas do reality show mais saboroso! Quem criará a próxima Méquizice surpreendente? 🍔✨", album: "BBB", stickerScore: 10)
         let collection3 = Collection(id: 3, nome: "Karol Conká", imagemDesbloqueada: "url_3", imagemBloqueada: "urlBloq_3", categoria: "Brothers", raridade: false, descricao: "Figurinha icônica representando a cantora Karol Conká.", album: "BBB", stickerScore: 20)
@@ -186,15 +139,12 @@ class CollectionViewController: UIViewController {
         let collection27 = Collection(id: 27, nome: "RoBBB Amarelo", imagemDesbloqueada: "url_27", imagemBloqueada: "urlBloq_27", categoria: "RoBBB", raridade: false, descricao: "Figurinha representando o icônico RoBBB Amarelo.", album: "BBB", stickerScore: 10)
         let collection28 = Collection(id: 28, nome: "Marisa Orth", imagemDesbloqueada: "url_28", imagemBloqueada: "urlBloq_28", categoria: "Apresentadores", raridade: false, descricao: "Talentosa atriz e apresentadora de televisão.", album: "BBB", stickerScore: 10)
 
-        
-//                       model album
-                       models.append(Model(id: 1, text: "BBB", imageName: "image_1", imageDetails: "bbb1", figurinhas: [collection1,collection2,collection3,collection4,collection5,collection6,collection7,collection8, collection9,collection10,collection11,collection12,collection13,collection14,collection15,collection16,collection17,collection18,collection19,collection20,collection21,collection22,collection23,collection24,collection25,collection26,collection27,collection28]))
-                       models.append(Model(id: 2, text: "Tunel do amor", imageName: "image_2", imageDetails: "bbb1", figurinhas: []))
-                       models.append(Model(id: 3, text: "No limite", imageName: "image_3", imageDetails: "bbb1", figurinhas: []))
-                       models.append(Model(id: 4, text: "The voice", imageName: "image_4", imageDetails: "bbb1", figurinhas: []))
-                       models.append(Model(id: 5, text: "The masked singer", imageName: "image_5", imageDetails: "bbb1", figurinhas: []))
+           models.append(Model(id: 1, text: "BBB", imageName: "image_1", imageDetails: "bbb1", figurinhas: [collection1,collection2,collection3,collection4,collection5,collection6,collection7,collection8, collection9,collection10,collection11,collection12,collection13,collection14,collection15,collection16,collection17,collection18,collection19,collection20,collection21,collection22,collection23,collection24,collection25,collection26,collection27,collection28]))
+           models.append(Model(id: 2, text: "Tunel do amor", imageName: "image_2", imageDetails: "bbb1", figurinhas: []))
+           models.append(Model(id: 3, text: "No limite", imageName: "image_3", imageDetails: "bbb1", figurinhas: []))
+           models.append(Model(id: 4, text: "The voice", imageName: "image_4", imageDetails: "bbb1", figurinhas: []))
+           models.append(Model(id: 5, text: "The masked singer", imageName: "image_5", imageDetails: "bbb1", figurinhas: []))
        
-                       //recents
         recents.append(ModelRecents(id: 1, nome: "RoBBB Mau", imagemDesbloqueada: "url_1", imagemBloqueada: "urlBloq_1", categoria: "RobBBB", raridade: true, descricao: "RoBBB Mau, a personificação do Castigo do Monstro. Nele, a produção determina ações desconfortáveis ao longo de todo um final de semana.", album: "bbb", stickerScore: 10))
         recents.append(ModelRecents(id: 2, nome: "McDonald’s", imagemDesbloqueada: "url_2", imagemBloqueada: "urlBloq_2", categoria: "Patrocinadores", raridade: true, descricao: "Patrocinador oficial do BBB, transformando lanches em estrelas do reality show mais saboroso! Quem criará a próxima Méquizice surpreendente? 🍔✨", album: "bbb", stickerScore: 10))
         recents.append(ModelRecents(id: 3, nome: "Karol Conká", imagemDesbloqueada: "url_3", imagemBloqueada: "urlBloq_3", categoria: "Brothers", raridade: false, descricao: "Figurinha icônica representando o RoBBB Mau, a personificação do Castigo do Monstro.", album: "bbb", stickerScore: 10))
@@ -223,7 +173,6 @@ class CollectionViewController: UIViewController {
         recents.append(ModelRecents(id: 26, nome: "Mercado Livre", imagemDesbloqueada: "url_26", imagemBloqueada: "urlBloq_26", categoria: "Patrocinadores", raridade: true, descricao: "Importante parceiro de e-commerce do programa.", album: "bbb", stickerScore: 10))
                        recents.append(ModelRecents(id: 27, nome: "RoBBB Amarelo", imagemDesbloqueada: "url_27", imagemBloqueada: "urlBloq_27", categoria: "RobBBB", raridade: false, descricao: "Figurinha icônica representando o RoBBB Amarelo", album: "bbb", stickerScore: 10))
         recents.append(ModelRecents(id: 28, nome: "Glória Maria", imagemDesbloqueada: "url_28", imagemBloqueada: "urlBloq_28", categoria: "Apresentadores", raridade: false, descricao: "Uma das jornalistas mais renomadas do Brasil.", album: "bbb", stickerScore: 10))
-
     }
     
     @objc func buttonSearchTapped() {
@@ -231,7 +180,6 @@ class CollectionViewController: UIViewController {
     }
     
     @objc func buttonProfileTapped() {
-        // Ação a ser executada quando o botão é tocado
         print("Botão do perfil tocado!")
     }
 }
@@ -267,10 +215,4 @@ extension CollectionViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
     }
-
-    
-    
-
-
 }
-

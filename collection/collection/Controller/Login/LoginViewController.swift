@@ -81,7 +81,6 @@ class LoginViewController: UIViewController {
         view.addSubview(loginButton)
         view.addSubview(registerButton)
         
-        
         // Constraints
         NSLayoutConstraint.activate([
             userImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
@@ -111,7 +110,6 @@ class LoginViewController: UIViewController {
         
         // Target action for login button
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
-        
         registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
     }
     
@@ -131,41 +129,16 @@ class LoginViewController: UIViewController {
             }else {
                 
                 self.transitionToTabBar()
-                //userdefaults
+                
                 if let user = result?.user{
                     let uid = user.uid
                     UserDefaults.standard.set(uid, forKey: "userUID")
-                    print(UserDefaults.standard.set(uid, forKey: "userUID")
-)
+                    print(UserDefaults.standard.set(uid, forKey: "userUID"))
                 }
                 print("login feito com sucesso")
                 self.alert(title: "parabens", message: "login feito com sucesso!")
-
-                
             }
         }
-//        self.auth?.signIn(withEmail: email, password: pass, completion: { (user, error) in
-//
-//            if error != nil{
-//                self.alert(title: "atencao", message: "dados incorretos")
-//                print("Usuário não encontrado \(error)")
-//
-//            }else{
-//
-//                if user == nil{
-//                    self.alert(title: "atencao", message: "tivemos um problema inesperado")
-//                    print("tivemos um problema inesperado ou usuario nao existente")
-//
-//                }else{
-//                    self.alert(title: "parabens", message: "login feito com sucesso!")
-//                    print("login feito com sucesso")
-//
-////                    self.transitionToTabBar()
-//                }
-//
-//            }
-//
-//        })
     }
     
     @objc private func registerButtonTapped() {
@@ -180,16 +153,4 @@ class LoginViewController: UIViewController {
         self.navigationController?.setViewControllers([tabBarControlle], animated: true)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
-    
-//    func transitionToTabBar() {
-//        let tabBarControlle = TabBarController()
-//        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-//            appDelegate.window?.rootViewController = tabBarControlle
-//        }
-//    }
-
-
 }
-
-
-

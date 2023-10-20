@@ -17,7 +17,6 @@ class MyRecentCollectionViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     public func configure(with recents: ModelRecents) {
@@ -29,12 +28,8 @@ class MyRecentCollectionViewCell: UICollectionViewCell {
 //            title.text = recents.nome
 //            subTitle.text = recents.album
             
-
         } else {
             myImageView.image = UIImage(named: "")
-//            title.text = ""
-//            subTitle.text = ""
-
         }
     }
 }

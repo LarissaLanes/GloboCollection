@@ -53,9 +53,7 @@ class HomeViewController: UIViewController {
             let auth = Auth.auth()
             
             if let currentUser = auth.currentUser {
-                // O usuário está autenticado, então podemos prosseguir com a exclusão da conta
                 
-                // Exclua o documento do usuário no Firestore
                 db.collection("users").document(userUID).delete { (error) in
                     if let error = error {
                         print("Erro ao excluir documento do usuário no Firestore: \(error.localizedDescription)")
@@ -63,18 +61,14 @@ class HomeViewController: UIViewController {
                         print("Documento do usuário excluído com sucesso no Firestore.")
                         UserDefaults.standard.removeObject(forKey: "userUID")
 
-                        
-                        // Exclua a conta do Firebase
                         currentUser.delete { (error) in
                             if let error = error {
                                 print("Erro ao excluir a conta do usuário no Firebase: \(error.localizedDescription)")
                             } else {
                                 print("Conta do usuário excluída com sucesso no Firebase.")
                                 
-                                // Limpe o UID do usuário no armazenamento local
                                 UserDefaults.standard.removeObject(forKey: "userUID")
                                 
-                                // Redirecione o usuário para a tela de login
                                 self.transitionToLogin()
                             }
                         }
@@ -82,7 +76,6 @@ class HomeViewController: UIViewController {
                 }
             } else {
                 print("O usuário não está autenticado. Solicite que faça login novamente.")
-                // Exibir uma mensagem de erro ou redirecionar o usuário para a tela de login
             }
         } else {
             print("UID do usuário não encontrado no armazenamento local.")
@@ -90,16 +83,13 @@ class HomeViewController: UIViewController {
     }
     
     func transitionToLogin() {
+        
         let loginViewController = LoginViewController()
         
-        // Redireciona o usuário para a tela de login (ou apropriada)
-        // Certifique-se de que o controlador de navegação esteja configurado para a tela de login
         if let navigationController = self.navigationController {
             navigationController.setViewControllers([loginViewController], animated: true)
             navigationController.setNavigationBarHidden(true, animated: false)
         } else {
-            // Caso o controlador de navegação não esteja configurado, apresente a tela de login de alguma outra maneira.
-            // Por exemplo, você pode apresentar o controlador de login como uma janela modal.
             self.present(loginViewController, animated: true, completion: nil)
         }
     }
