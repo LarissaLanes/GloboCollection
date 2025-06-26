@@ -1,7 +1,7 @@
 # Globo collection
 App desenvolvido em swift IOS
 
-- [link do projeto](https://globo-collection.netlify.app/stickes/stickes)
+- [link do MVP](https://github.com/LarissaLanes/collection-validation/blob/main/README.md)
 
 ## Autores
 
